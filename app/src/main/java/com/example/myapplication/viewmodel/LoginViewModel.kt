@@ -1,43 +1,59 @@
 package com.example.myapplication.viewmodel
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.tooling.preview.Devices
 import androidx.lifecycle.ViewModel
-import com.apollographql.apollo3.ApolloCall
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Optional
-import com.example.LoginMutation
+import com.apollographql.apollo3.exception.ApolloException
+import com.example.myapplication.ErrorHandler
 import com.example.type.EntitlementDevice
 import com.example.type.InitiatePasswordlessSignInput
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.singleOrNull
 
-class LoginViewModel: ViewModel() {
 
+class LoginViewModel : ViewModel() {
     private val apolloClient = ApolloClient.Builder()
         .serverUrl("https://api.develop.monumentalsportsnetwork.com/graphql")
         .build()
 
-    val key = mutableStateOf("null")
-    val state :State<String> = key
+    private val key = mutableStateOf<String?>(null)
 
-    fun demo(){
+    suspend fun demo(): String {
 
-        val mutationQuery = apolloClient.mutation(com.example.LoginMutation(
-            site = "msndev",
-            device = EntitlementDevice.android_phone,
-            input = InitiatePasswordlessSignInput(
-                email = Optional.present("sjasmeet438@gmail.com"),
-                deviceId = Optional.present("1234567890"),
-                platform = Optional.present(EntitlementDevice.android_phone),
-            )
-        )
-        ).toFlow().map {
-            it.data
-          key.value = it.data?.identityInitiateSignOtp?.key.toString()
+        try {
+            val mutationQuery = apolloClient.mutation(
+                com.example.LoginMutation(
+                    site = "msndev",
+                    device = EntitlementDevice.android_phone,
+                    input = InitiatePasswordlessSignInput(
+                        email = Optional.present(".com"),
+                        deviceId = Optional.present("1234567890"),
+                        platform = Optional.present(EntitlementDevice.android_phone),
+                    )
+                )
+            ).toFlow()
+            val response = mutationQuery.singleOrNull()
+            key.value = response?.dataAssertNoErrors.toString()
+
+            return key.value?:"Key is null"
+        }catch (e: ApolloException) {
+            val errorCode = extractErrorCodeFromMessage(e.message ?: "")
+           val errorMessage = ErrorHandler.parseGraphQLError(errorCode)
+
+
+            return (errorMessage?:"Error code is null").toString()
+
+        }catch (e:Exception){
+            key.value = e.message.toString()
+            return  "Other Exception occurred: ${e.message}"
         }
+    }
 
+    private fun extractErrorCodeFromMessage(message: String): String? {
+        val regex = """code=(\w+)""".toRegex()
+        val matchResult = regex.find(message)
+        return matchResult?.groupValues?.get(1)
     }
 }
+
+
