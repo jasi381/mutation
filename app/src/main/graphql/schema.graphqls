@@ -1,0 +1,5413 @@
+type AbConfig {
+  featureIdentifier: String
+
+  path: [String]
+
+  pageId: String
+
+  variations: [AbConfigVariation]
+}
+
+type AbConfigVariation {
+  pageId: String
+
+  variationId: Int
+
+  hash: String
+}
+
+input AdobeMetadata {
+  zip: String
+
+  encryptedZip: String
+}
+
+type AlertPersonalization {
+  enabled: Boolean
+
+  start: Boolean
+
+  quarter: Boolean
+
+  final: Boolean
+}
+
+input AlertPersonalizationInput {
+  enabled: Boolean
+
+  start: Boolean
+
+  quarter: Boolean
+
+  final: Boolean
+}
+
+input AmazonIapRequest {
+  userId: String!
+
+  siteId: String!
+
+  paymentUniqueId: String!
+
+  subscription: String!
+
+  planId: String!
+
+  planIdentifier: String!
+
+  paymentHandler: String
+
+  platform: EntitlementDevice!
+
+  email: String!
+
+  stripeToken: String
+
+  currencyCode: String!
+
+  retryCount: String!
+
+  nextBillingDate: String
+
+  zip: String
+
+  receipt: String!
+
+  addEntitlement: String!
+
+  referenceNo: String
+
+  amazonIAPUserId: String!
+}
+
+type AmazonIapResponse {
+  code: String
+
+  error: String
+
+  id: String
+
+  isRenewable: String
+
+  isUnsubscribed: String
+
+  identifier: String
+
+  message: String
+
+  name: String
+
+  planDetails: [PlanDetails]
+
+  renewalCyclePeriodMultiplier: String
+
+  renewalCycleType: String
+
+  siStatus: String
+
+  subscriptionStatus: String
+
+  renewable: String
+
+  unsubscribed: String
+}
+
+type AnalyticsBeacon {
+  bufferInterval: Int
+
+  enable: Boolean
+
+  interval: Int
+}
+
+type Android {
+  isActive: Boolean
+
+  minimumChargeAmount: Float
+
+  packageName: String
+
+  restrictedCountry: String
+}
+
+input AndroidIapReceipt {
+  orderId: String!
+
+  packageName: String!
+
+  productId: String!
+
+  purchaseTime: String!
+
+  purchaseState: String!
+
+  purchaseToken: String!
+
+  obfuscatedAccountId: String!
+
+  quantity: Int!
+
+  autoRenewing: String!
+
+  acknowledged: Boolean!
+}
+
+input AndroidIapRequest {
+  userId: String!
+
+  siteId: String!
+
+  paymentUniqueId: String
+
+  subscription: String!
+
+  planId: String!
+
+  planIdentifier: String!
+
+  paymentHandler: String
+
+  platform: EntitlementDevice!
+
+  email: String
+
+  stripeToken: String
+
+  currencyCode: String
+
+  retryCount: Int
+
+  nextBillingDate: String
+
+  zip: String
+
+  receipt: AndroidIapReceipt!
+
+  addEntitlement: Boolean!
+
+  referenceNo: String
+
+  amazonIAPUserId: String
+}
+
+scalar Any
+
+type ApiKey {
+  apiKey: String
+
+  name: String
+}
+
+type AppcmsAnalytics {
+  adjustEventsData: Map
+
+  adjustSDKTokenId: String
+
+  cleverMIPushAppId: String
+
+  cleverTapMIPushAppKey: String
+
+  conversionApi: ConversionApi
+}
+
+type AppcmsAppVersion {
+  latest: String
+
+  minimum: String
+
+  updateUrl: String
+}
+
+type AppcmsBeacon {
+  apiBaseUrl: String
+}
+
+type AppcmsBrand {
+  metadata: BrandMetadata
+
+  player: BrandPlayer
+
+  trayGlow: BrandTrayGlow
+
+  font: BrandFont
+
+  general: BrandGeneral
+
+  cta: BrandCta
+
+  navigation: BrandNavigation
+
+  footer: BrandFooter
+
+  statusBar: BrandStatusBar
+
+  themeId: String
+
+  useDefault: Boolean
+
+  scheduleCards: BrandScheduleCards
+}
+
+type AppcmsCustomerService {
+  email: String
+
+  freshChat: FreshChat
+}
+
+type AppcmsEmailConsent {
+  enableEmailConsent: Boolean
+
+  isChecked: Boolean
+
+  message: String
+}
+
+type AppcmsFeatures {
+  add_site_level_mini_player: Boolean
+
+  analytics_beacon: AnalyticsBeacon
+
+  app_download_suggestion: Boolean
+
+  audio_preview: AudioPreview
+
+  auto_play: Boolean
+
+  autoplay_timer: Int
+
+  casting: Boolean
+
+  countryProviderCode: String
+
+  customReceiverId: String
+
+  defaultModuleLimit: Int
+
+  disableAutoPlay: Boolean
+
+  disableSkeleton: Boolean
+
+  enableOldPlayerUI: Boolean
+
+  enablePWA: Boolean
+
+  enableQOS: Boolean
+
+  enableStreamConcurrency: Boolean
+
+  enableSubscribeNow: Boolean
+
+  enable_article_hardwall: Boolean
+
+  enable_contact_us_email: Boolean
+
+  enable_mini_player: Boolean
+
+  extendSubscriptionBanner: Boolean
+
+  free_preview: FreePreview
+
+  free_preview_unit: String
+
+  google_playstore_url: String
+
+  hideWatchlist: Boolean
+
+  hls: Boolean
+
+  itunes_store_url: String
+
+  legal_verbiage: Boolean
+
+  legal_verbiage_copy: String
+
+  legal_verbiage_error: String
+
+  login_module: Boolean
+
+  login_module_enabled: Boolean
+
+  math_problem: Boolean
+
+  mobile_app_downloads: Boolean
+
+  mute_sound: Boolean
+
+  navigation: String
+
+  orientation: Orientation
+
+  otp_value: OtpValue
+
+  parental_control: Boolean
+
+  portrait_viewing: Boolean
+
+  profileRequired: Boolean
+
+  ratings: Ratings
+
+  showDetailOnlyOnApps: Boolean
+
+  showDetailToggle: Boolean
+
+  signup_module_enabled: Boolean
+
+  tabsLimit: Int
+
+  trick_play: Boolean
+
+  tve_login_enabled: Boolean
+
+  user_content_rating: Boolean
+
+  watched_history: WatchedHistory
+
+  weather_widget: Boolean
+
+  web_subscription_only: Boolean
+
+  whatsappConsent: WhatsappConsent
+}
+
+type AppcmsGenericMessages {
+  contentConsumptionGuestMessage: String
+
+  subscriptionFromVizioMessage: String
+
+  contentConsumptionSubscribedMessage: String
+
+  cantAccessGeoBlockedByPlan: String
+
+  codeNotValidPlan: String
+
+  connectAccountEditLabel: String
+
+  contentNotAvailableInYourArea: String
+
+  contentNotAvailableforTVProvider: String
+
+  deviceLimitExceeded: String
+
+  duplicateTransaction: String
+
+  enterEmailAddressMessageForFreePlan: String
+
+  invalidStatus: String
+
+  maxStreamError: String
+
+  nameNotValid: String
+
+  notValidActivationCode: String
+
+  notValidCode: String
+
+  notValidStatus: String
+
+  noRecordExist: String
+
+  offerAlreadyUsed: String
+
+  paymentRetry: String
+
+  receiptExpiredException: String
+
+  subscriptionHold: String
+
+  subscriptionPaused: String
+
+  skipIntroButtonText: String
+
+  skipRecapButtonText: String
+
+  acceptOffer: String
+
+  accountError: String
+
+  activateDeviceErrorMessage: String
+
+  activateDeviceSuccessMessage: String
+
+  activationCodeFetchError: String
+
+  addPhoneNumber: String
+
+  addToDownloadQueue: String
+
+  addToReadlist: String
+
+  addToWatchlist: String
+
+  addedToWatchlistLabel: String
+
+  agreeCta: String
+
+  alertDialogTitle: String
+
+  allLabel: String
+
+  allOffersHead: String
+
+  allowedDevices: String
+
+  allowedStreams: String
+
+  alreadyDownloaded: String
+
+  alreadyDownloadedOtherUser: String
+
+  alreadyDownloadedSameQuality: String
+
+  andLabel: String
+
+  answerMathProblemMessage: String
+
+  appInboxDismiss: String
+
+  appInboxNotifications: String
+
+  appUpdatePrefix: String
+
+  appUpdateSuffix: String
+
+  appUpgradeText: String
+
+  appVersionText: String
+
+  appleManageSubscriptionAlertButtonTitle: String
+
+  appleManageSubscriptionMessage: String
+
+  appliedOfferTextPartOne: String
+
+  appliedOffersCta: String
+
+  applyOfferCta: String
+
+  applyOfferHead: String
+
+  applyOfferInputPlaceholder: String
+
+  applyOfferProcessing: String
+
+  applyOfferSuccess: String
+
+  articleTrayHeader: String
+
+  articleWallLabel: String
+
+  articlesTrayHeader: String
+
+  audioLanguage: String
+
+  audioPreviewMessage: String
+
+  audioTracksTitleLabel: String
+
+  audioTrayHeader: String
+
+  autoHlsResolution: String
+
+  autoPlayoffMessage: String
+
+  autoplayOffMenu: String
+
+  autoplayOnMenu: String
+
+  backCta: String
+
+  backToHomeButton: String
+
+  becomeAmemberCta: String
+
+  billingResponseError: String
+
+  bundleSeriesTrayHeader: String
+
+  bundleTrayHeader: String
+
+  bundlesTrayHeader: String
+
+  by: String
+
+  callUsAtLabel: String
+
+  cancelCta: String
+
+  cancelCountdownCta: String
+
+  cancelPlanConfirmationMessage: String
+
+  cancelPlanHeaderLabel: String
+
+  cancelScheduleDate: String
+
+  cannotDownloadErr: String
+
+  cannotPurchaseItemMessage: String
+
+  cardUpdateDescription: String
+
+  cardUpdateFailMessage: String
+
+  cardUpdateFailMessageTitle: String
+
+  cardUpdatePendingMessage: String
+
+  cardUpdatePendingMessageTitle: String
+
+  cardUpdateSuccessMessage: String
+
+  cardUpdateSuccessMessageTitle: String
+
+  castErrorTitle: String
+
+  castMsgPrefix: String
+
+  castMsgSuffix: String
+
+  castOverlayMessage: String
+
+  castTutorialTitleLabel: String
+
+  castUnavilableMsg: String
+
+  castingLoadingMessage: String
+
+  castingTo: String
+
+  cellularDisabledErrorMsg: String
+
+  cellularDisabledErrorTitle: String
+
+  cellularDownload: String
+
+  cellularPreferenceMessage: String
+
+  changeViewingRestrictions: String
+
+  checkExistingSubscription: String
+
+  checkForSubscription: String
+
+  checkSubscriptionFailureMessage: String
+
+  choosePlan: String
+
+  chooseTvProviderCta: String
+
+  clearHistoryCta: String
+
+  clearLabel: String
+
+  closedCaptionOffMenu: String
+
+  closedCaptionOffMessage: String
+
+  closedCaptionOnMenu: String
+
+  closedCaptions: String
+
+  confirmCta: String
+
+  connectCast: String
+
+  connectedTo: String
+
+  connectingTo: String
+
+  contactCustomerSupport: String
+
+  contactSupportForSubscription: String
+
+  contactUsLabel: String
+
+  contentFilterDefaultHeading: String
+
+  contentFilterDescription: String
+
+  contentFilterReset: String
+
+  contentFilterSettingsText: String
+
+  contentFilterSubmit: String
+
+  contentFilterTitle: String
+
+  contentFilterUpdateError: String
+
+  contentNotEnabledMessagePrefix: String
+
+  contentNotEnabledMessageSuffix: String
+
+  contentRatingDescriptionLabel: String
+
+  contentRatingTextWarningLabel: String
+
+  contentRatingTitle: String
+
+  contentRatingViewerDiscretionLabel: String
+
+  continueCta: String
+
+  continueOffer: String
+
+  cookiesDisclaimer: String
+
+  correctPinMessage: String
+
+  countdownCancelledLabel: String
+
+  currentVerisonText: String
+
+  dayUpper: String
+
+  defaultAudioSettingLabel: String
+
+  disconnectDevice: String
+
+  doneCta: String
+
+  doneText: String
+
+  downloadAlreadyErrorTitle: String
+
+  downloadCapacityError: String
+
+  downloadErrMessage: String
+
+  downloadExternalStorageMessage: String
+
+  downloadExternalStorageTitle: String
+
+  downloadLowerCase: String
+
+  downloadPLayLimitDialogMessage: String
+
+  downloadQualityDataUsesText: String
+
+  downloadSpaceDialogMessage: String
+
+  downloadSpaceDialogTitle: String
+
+  downloadStarted: String
+
+  downloadUnavailableDialogTitle: String
+
+  downloadUnavilableMsg: String
+
+  downloaded: String
+
+  downloadedLabel: String
+
+  downloadingLabel: String
+
+  drmHeaderText: String
+
+  drmMediaSessionHeader: String
+
+  drmMediaSessionTitle: String
+
+  drmNotCasted: String
+
+  drmNotDownloaded: String
+
+  editAccount: String
+
+  editLabel: String
+
+  emailAlreadyLinked: String
+
+  emailAlreadySubscribedText: String
+
+  emailFormatValidationMessage: String
+
+  emailLabel: String
+
+  emailSubscriptionSuccessText: String
+
+  emailUsAtLabel: String
+
+  email_phoneInput: String
+
+  emptyEmailValidationMessage: String
+
+  emptyPasswordValidationMessage: String
+
+  emptySearchField: String
+
+  encourageUserToLoginLabel: String
+
+  enterCorrectPassword: String
+
+  enterEmailLabel: String
+
+  enterPhoneLabel: String
+
+  enterVideoPin: String
+
+  entitlementErrorMessage: String
+
+  entitlementErrorMessageAudio: String
+
+  entitlementErrorMessageForDownload: String
+
+  entitlementErrorMessageForDownloadAvod: String
+
+  entitlementErrorTitle: String
+
+  entitlementLoginErrorMessage: String
+
+  episodeButton: String
+
+  episodeLabel: String
+
+  episodesTrayHeader: String
+
+  errorDialogBackCta: String
+
+  errorDialogCancelCta: String
+
+  errorDialogCloseCta: String
+
+  errorDialogNoCta: String
+
+  errorDialogOkCta: String
+
+  errorDialogRetryCta: String
+
+  errorDialogSignInCta: String
+
+  errorDialogSignUpCta: String
+
+  errorDialogYesCta: String
+
+  errorOccurredMessage: String
+
+  eventsTrayHeader: String
+
+  existingSubscriptionDoesNotExist: String
+
+  existingUserLogin: String
+
+  exitDialogMessage: String
+
+  exitDialogTitle: String
+
+  faceId: String
+
+  faceIdDisabledMessage: String
+
+  faceIdDisabledTitle: String
+
+  faceIdEnabledMessage: String
+
+  faceIdEnabledTitle: String
+
+  faceOff: String
+
+  failMessage: String
+
+  failMessageTitle: String
+
+  failedPaymentErrorTitle: String
+
+  failedToAddToWatchlist: String
+
+  failedToRemoveFromWatchlist: String
+
+  failureTitleText: String
+
+  featureRestrictUpgradeMsg: String
+
+  fetchVideoQualities: String
+
+  fightersTrayHeader: String
+
+  findAdultForHelpMessage: String
+
+  finishedTitleLabel: String
+
+  freahChatFromHeading: String
+
+  freeLabel: String
+
+  freshChatMissingEmail: String
+
+  freshChatMissingNumber: String
+
+  galleryTrayHeader: String
+
+  geoRestrictErrorMessage: String
+
+  getMemberShipMessage: String
+
+  getSocialCongratulations: String
+
+  getSocialCopyUrlText: String
+
+  getSocialEmailSubject: String
+
+  getSocialFreeMessage: String
+
+  getSocialFriendGetDiscount: String
+
+  getSocialGetExtraSubscription: String
+
+  getSocialInstallChannelTitle: String
+
+  getSocialInviteSuccessMessage: String
+
+  getSocialNoRecordFoundText: String
+
+  getSocialNotYetSubscribedText: String
+
+  getSocialReferFriendsLink: String
+
+  getSocialReferralsHeading: String
+
+  getSocialReferredFriendsLink: String
+
+  getSocialReferredFriendsList: String
+
+  getSocialReferredFriendsTitle: String
+
+  getSocialSerialNumberText: String
+
+  getSocialShareWithFriends: String
+
+  getSocialShareviaText: String
+
+  getSocialSignInButtonText: String
+
+  getSocialSubscribedText: String
+
+  getSocialSubscriptionDateTitle: String
+
+  getSocialSubscriptionStatusTitle: String
+
+  goCta: String
+
+  googlePayCancelButton: String
+
+  googlePayConfirmButton: String
+
+  googlePayConfirmationMessage: String
+
+  grabGrownUpMessage: String
+
+  guestUserSubscriptionMessage: String
+
+  haveAccount: String
+
+  hdStreamUnavailableMsg: String
+
+  highQualityDownload: String
+
+  holdSubscriptionStatusMessagePartTwo: String
+
+  hoverEpisodeLabel: String
+
+  hoverEpisodesLabel: String
+
+  hoverSeasonsLabel: String
+
+  iTunesConnectErrorMessage: String
+
+  iapReferralPurchaseWeb: String
+
+  inCorrectPinMessage: String
+
+  incorrectEmailMessage: String
+
+  internetErrorMessageHeader: String
+
+  internetErrorMessageText: String
+
+  invalidEmailDialogTitle: String
+
+  itemFailedToPlay: String
+
+  itemQueueUnavailable: String
+
+  itemResumedPlayBack: String
+
+  itemUnavailableMsg: String
+
+  jioWelcomeMessage: String
+
+  jusPayInitErrorMessage: String
+
+  justFinishedLabel: String
+
+  kClearAll: String
+
+  kClearAllAlertTile: String
+
+  kCountryDialCodeError: String
+
+  kError: String
+
+  kFailedStatus: String
+
+  kFoundSubscriptionDetails: String
+
+  kInternetConnectionPostString: String
+
+  kLoadMore: String
+
+  kNoResponseErrorMessage: String
+
+  kNoResponseErrorTitle: String
+
+  kPushNotificationAlertMessage: String
+
+  kPushNotificationAlertViewTitle: String
+
+  kRecentSearchTitle: String
+
+  kResubscribeAlertTitle: String
+
+  kResubscribeAndroidAlert: String
+
+  kResubscribeAppleAlert: String
+
+  kResubscribeFireTVAlert: String
+
+  kResubscribeOtherAlert: String
+
+  kResubscribePs4Alert: String
+
+  kResubscribeRokuAlert: String
+
+  kResubscribeSmartTVAlert: String
+
+  kResubscribeWebAlert: String
+
+  kResubscribeWindowsAlert: String
+
+  kSearchTitlesRelated: String
+
+  kStrTryAgain: String
+
+  kStrUnableFetchData: String
+
+  kSuccess: String
+
+  kTopResults: String
+
+  kTrendingSearchTitle: String
+
+  languageAlertMessage: String
+
+  languageSelectionConfirmMessage: String
+
+  largeFont: String
+
+  lastUpdatedText: String
+
+  learnMore: String
+
+  licenceExpiredMessage: String
+
+  live: String
+
+  livePreviewMessageOther: String
+
+  livePreviewMessageSportsFitness: String
+
+  liveStreaming: String
+
+  loadingMessage: String
+
+  loadingVideo: String
+
+  lockScreenButton: String
+
+  lockScreenMessage1: String
+
+  lockScreenMessage2: String
+
+  lockedLabel: String
+
+  loginRequiredDialogMessage: String
+
+  loginRequiredDialogTitle: String
+
+  loginSubscriptionDialogMessage: String
+
+  loginSubscriptionDialogTitle: String
+
+  loginTextCta: String
+
+  loginTveCta: String
+
+  loginTveMessage: String
+
+  logoutDialogMessage: String
+
+  logoutVideoDownloadDialogMessage: String
+
+  logoutVideoDownloadDialogTitle: String
+
+  lowDownloadQuality: String
+
+  lowInternetBandwidthText: String
+
+  mailComposerErrorMessage: String
+
+  manageCta: String
+
+  manageFont: String
+
+  manageParentalFromMobileOrWeb: String
+
+  managePersonalization: String
+
+  manageSubscription: String
+
+  mediumDownloadQuality: String
+
+  memoryCapacityErrorTitle: String
+
+  memoryWarningPrefix: String
+
+  memoryWarningSuffix: String
+
+  menuHelpText: String
+
+  menuTitle: String
+
+  minuteLabel: String
+
+  minuteLabelFull: String
+
+  minutesLabel: String
+
+  minutesLabelFull: String
+
+  moduleErrorMessage: String
+
+  moreLabel: String
+
+  myNavItemPrefix: String
+
+  myProfileMenuItem: String
+
+  needSupport: String
+
+  nextClassText: String
+
+  nextEpisodeButton: String
+
+  nextLabel: String
+
+  noCancel: String
+
+  noClosedCaptionMessage: String
+
+  noDeviceAvailable: String
+
+  noEmailAlertMessage: String
+
+  noEpisodes: String
+
+  noFight: String
+
+  noNextAudio: String
+
+  noOfferText: String
+
+  noPhotos: String
+
+  noPlanInContentMessage: String
+
+  noPreviousAudio: String
+
+  noProductAlertMessage: String
+
+  noProductAlertTitle: String
+
+  noProviderFound: String
+
+  noResult: String
+
+  noResultForLabel: String
+
+  noSeason: String
+
+  noSubscriptionMessage: String
+
+  noUpgradeOnPrepaidMessage: String
+
+  noVideoInQueue: String
+
+  noVideoQualityMessage: String
+
+  noVideos: String
+
+  notPurchased: String
+
+  offLabel: String
+
+  offerVerbiagePartOne: String
+
+  offerVerbiagePartTwo: String
+
+  openBrowserText: String
+
+  openSafariTile: String
+
+  optimisationMessage: String
+
+  otherPaymentDescription: String
+
+  otherPaymentTitle: String
+
+  outOfDateHardUpdateText: String
+
+  outOfDateText: String
+
+  ownCta: String
+
+  parentalControlRequiredMessage: String
+
+  passwordFormatValidationMessage: String
+
+  pauseDownload: String
+
+  pauseSubscriptionStatusMessagePartTwo: String
+
+  paymentflowInstruction1: String
+
+  paymentflowInstruction2: String
+
+  paymentflowInstruction3: String
+
+  pendingMessageTitle: String
+
+  personalizationSettingsTitle: String
+
+  personalizeSkipText: String
+
+  phoneNotFoundMessage: String
+
+  phoneNumber: String
+
+  phoneNumberErrorMessage: String
+
+  phoneNumberInput: String
+
+  photo: String
+
+  photogalleryTrayHeader: String
+
+  photos: String
+
+  pinSetSuccess: String
+
+  planInCountryNotFound: String
+
+  plansNotFoundMessage: String
+
+  playCta: String
+
+  playInLabel: String
+
+  playbackQuality: String
+
+  playbackQualityDataUsesText: String
+
+  playerSettingsUnavailable: String
+
+  playersTrayHeader: String
+
+  pleaseWaitMessage: String
+
+  popupClosedByUser: String
+
+  premiumContentDialogTitle: String
+
+  premiumContentGuestUserDialogMessage: String
+
+  premiumContentLoggedInUserDialogMessage: String
+
+  pressDownForMoreContentLabel: String
+
+  pressHoldContinue: String
+
+  pressMenuButton: String
+
+  pressUpMenuMessage: String
+
+  previewEndDialogTitle: String
+
+  previewEndedAlertMessage: String
+
+  previewEndedAlertTitle: String
+
+  previousSearchlabel: String
+
+  priceTrialEnd: String
+
+  privacyPolicyLabel: String
+
+  profileDetailsBtn: String
+
+  profileDetailsMessage: String
+
+  profileDetailsTitle: String
+
+  programLabel: String
+
+  programsTrayHeader: String
+
+  publishedOn: String
+
+  pullToRefreshLabel: String
+
+  purchaseAllOverlayLabel: String
+
+  purchaseEpisodeLabel: String
+
+  purchaseFailedFromAppleMessage: String
+
+  purchaseOptionsLabel: String
+
+  purchaseOverlayLabel: String
+
+  purchaseSeasonLabel: String
+
+  purchaseSeriesLabel: String
+
+  purchasedLabel: String
+
+  queuedDownload: String
+
+  ratingProceedAllow: String
+
+  ratingProceedDeny: String
+
+  ratingPromptConfirmationMessage: String
+
+  ratingPromptMessage: String
+
+  recaptchaCredits: String
+
+  recommendSaveButtonText: String
+
+  recommendSkipButtonText: String
+
+  recommendStartBrowsingText: String
+
+  recommendationSubTitle: String
+
+  recommendationTitle: String
+
+  redeemCodeError: String
+
+  redirectMessage: String
+
+  redirectMessageForPendingPayment: String
+
+  refreshingData: String
+
+  regularFont: String
+
+  removeFromReadlist: String
+
+  removeFromWatchlist: String
+
+  removedFromWatchlist: String
+
+  rentEpisodeLabel: String
+
+  rentOptionsLabel: String
+
+  rentOverlayLabel: String
+
+  rentPurchaseOverlayLabel: String
+
+  rentSeasonLabel: String
+
+  rentSeriesLabel: String
+
+  rentStartMessagePrefix: String
+
+  rentStartMessageSuffix: String
+
+  rentedLabel: String
+
+  resetYourPin: String
+
+  restorePurchaseFailureMessage: String
+
+  restorePurchaseLoggingUser: String
+
+  restorePurchaseReceiptUpdateMessage: String
+
+  restoreSignUp: String
+
+  restoreSuccessMessageForNonLinkedAccount: String
+
+  restoreSuccessTitle: String
+
+  resubscribeAndroidWithOtherProcessorAlert: String
+
+  resubscribeCta: String
+
+  resubscribeError: String
+
+  resubscribeLoader: String
+
+  resubscribeSuccess: String
+
+  resultTitleLabel: String
+
+  resumeDownload: String
+
+  retryButton: String
+
+  scanUPIPaymentTitle: String
+
+  scheduleToBeCancelledText: String
+
+  searchHeaderLabel: String
+
+  searchResultsLabel: String
+
+  seasonLabel: String
+
+  seasonPassLabel: String
+
+  secondLabel: String
+
+  secondLabelFull: String
+
+  secondsLabel: String
+
+  secondsLabelFull: String
+
+  seeAllTray: String
+
+  selectCta: String
+
+  selectLanguage: String
+
+  selectOptionText: String
+
+  selectPlanVerbiage: String
+
+  selectReason: String
+
+  selectedCta: String
+
+  seriesIncludeLabel: String
+
+  seriesTrayHeader: String
+
+  serverErrorMessageText: String
+
+  settingsButton: String
+
+  shareFacebook: String
+
+  shareTwitter: String
+
+  shareVideo: String
+
+  showForBigKidsMessage: String
+
+  simultaneousStreamError: String
+
+  singleEventLabel: String
+
+  skipAdLabel: String
+
+  skipButton: String
+
+  skipCreateAccountTitle: String
+
+  smallFont: String
+
+  song: String
+
+  songs: String
+
+  sslCommerzInitErrorMessage: String
+
+  startChat: String
+
+  startFreetrialButton: String
+
+  startFreetrialMessage: String
+
+  startFromBeginningText: String
+
+  stopCasting: String
+
+  strAccount: String
+
+  strAdLabel: String
+
+  strAnLabel: String
+
+  strCheckInternetConnection: String
+
+  strContentNotAvailable: String
+
+  strContentNotDownloaded: String
+
+  strErrUpdateSubscriptionStatus: String
+
+  strError: String
+
+  strErrorFilmDetails: String
+
+  strErrorLoadingDetails: String
+
+  strFilmUrlNotAvailable: String
+
+  strMyDownloads: String
+
+  strNoContent: String
+
+  strNoShareableContent: String
+
+  strNotEvent: String
+
+  strOfflineWatchVideoError: String
+
+  strOpenArticleInSafariAlertTitle: String
+
+  strOtherAccountAssosciated: String
+
+  strPaymentFailed: String
+
+  strPaymentProcessCanceled: String
+
+  strTapOk: String
+
+  strTapTryAgain: String
+
+  strUnableToFetchSubscription: String
+
+  strUnableToPlay: String
+
+  strUrlNotAvail: String
+
+  streamingInfoErrorMessage: String
+
+  streamingInfoErrorTitle: String
+
+  subTitlesOffButton: String
+
+  subTitlesOnButton: String
+
+  submitPhoneNumber: String
+
+  subscribeNowDialogButton: String
+
+  subscriberErr: String
+
+  subscriptionAlertTitle: String
+
+  subscriptionDetailsUpdateForLoggedInUser: String
+
+  subscriptionDetailsUpdateForLoggedOutUser: String
+
+  subscriptionExpiredMessage: String
+
+  subscriptionFromAndroidMessage: String
+
+  subscriptionFromAppleMessage: String
+
+  subscriptionFromRokuMessage: String
+
+  subscriptionFromWebsiteMessage: String
+
+  subscriptionInitiatedMessage: String
+
+  subscriptionLeftMessage: String
+
+  subscriptionMessageHeader: String
+
+  subscriptionRequiredDialogMessage: String
+
+  subscriptionRequiredDialogTitle: String
+
+  successMessage: String
+
+  successMessageTitle: String
+
+  swipeDownLabel: String
+
+  swipeUpLabel: String
+
+  tagged: String
+
+  teamSelectionText: String
+
+  termsOfUseLabel: String
+
+  thankyouForSubscribingMessage: String
+
+  thisDeviceLabel: String
+
+  thisVideo: String
+
+  timePeriodVerbiage: String
+
+  timerLabel: String
+
+  titleDownloadSettingLabel: String
+
+  tncDetails: String
+
+  toPayText: String
+
+  touchId: String
+
+  touchIdDisabledMessage: String
+
+  touchIdDisabledTitle: String
+
+  touchIdEnabledMessage: String
+
+  touchIdEnabledTitle: String
+
+  touchToCastMsg: String
+
+  trailerLabel: String
+
+  transactionDetailsEmailSubject: String
+
+  transactionFailureMsg: String
+
+  transactionFailureTitle: String
+
+  transactionPendingMsg: String
+
+  transactionSuccessMsg: String
+
+  transactionTitle: String
+
+  tvodContentError: String
+
+  tvodContentErrorPrefix: String
+
+  tvodContentErrorSuffix: String
+
+  unableDisableParental: String
+
+  unableSetPin: String
+
+  unableSetRestriction: String
+
+  unlockScreenButton: String
+
+  upNextLabel: String
+
+  updateApp: String
+
+  updateAppCta: String
+
+  updateApplication: String
+
+  updateAvailable: String
+
+  updatePhoneNumber: String
+
+  upgradeAnyTime: String
+
+  upgradeMembership: String
+
+  upgradeNow: String
+
+  upgradeSuccessMessage: String
+
+  upgradeWarningMessage: String
+
+  upgradeYourAccount: String
+
+  upgradeYourPlanMessage: String
+
+  upiPaymentTimeoutTitle: String
+
+  useCellularData: String
+
+  userCancelledAuthorize: String
+
+  userDevicesExceedError: String
+
+  userNotFoundMessage: String
+
+  userOnlineTimeAlert: String
+
+  userValidSubscription: String
+
+  validPhoneNumber: String
+
+  validPinError: String
+
+  verifyOTPText: String
+
+  videoLabel: String
+
+  videoNotLoaded: String
+
+  videoNotPlayableDialogTitle: String
+
+  videoUnavailableOnPlatformMsg: String
+
+  videoplaylistTrayHeader: String
+
+  videosTrayHeader: String
+
+  viewPlansCta: String
+
+  viewingRestrictionsEnabled: String
+
+  warningCta: String
+
+  watchNowCta: String
+
+  watchNowCtaNbc: String
+
+  waysToWatch: String
+
+  waysToWatchMessage: String
+
+  waysToWatchMessageForTVEGuestUser: String
+
+  webSubscriptionMessagePrefix: String
+
+  webSubscriptionMessageSuffix: String
+
+  week: String
+
+  willStartInLabel: String
+
+  yourSubscriptionTitle: String
+
+  seeMoreCTA: String
+
+  connectTvHead: String
+
+  connectTvDisclaimer: String
+
+  connectTvBtn: String
+
+  connectTvSkipBtn: String
+
+  mobileConnectPopupTitle: String
+
+  connectBtnTitle: String
+
+  cancelBtnTitle: String
+
+  mobileConnectNonLoggedInUserPopupTile: String
+
+  mobileConnnectWithDeviceNamePopupTitle: String
+
+  mobileConnectErrTitle: String
+
+  tvConnectRequestExpired: String
+
+  tvConnectRequestAlreadyRejected: String
+
+  failedToApproveMobileConnectRequest: String
+
+  liveScheduleTitle: String
+
+  postScheduleTitle: String
+
+  preGameBtnText: String
+
+  liveGameBtnText: String
+
+  postGameBtnText: String
+
+  endGameBtnText: String
+
+  alertBtnCTA: String
+
+  alertSubtitle: String
+
+  alertTitle: String
+
+  subscriptionFromFiretvMessage: String
+
+  halftimeText: String
+
+  overtimeText: String
+
+  networkErrorTitleText: String
+
+  networkErrorDescriptionText: String
+
+  networkErrorButtonText: String
+}
+
+type AppcmsImages {
+  placeholderCover: String
+
+  placeholderPoster: String
+}
+
+type AppcmsLanguages {
+  default: Language
+
+  languages: [Language!]
+}
+
+type AppcmsMain {
+  id: ID
+
+  site: String
+
+  internalName: String
+
+  accessKey: String
+
+  apiBaseUrl: String
+
+  apiBaseUrlCached: String
+
+  appInbox: Boolean
+
+  cachedAPIToken: String
+
+  cleverTapAnalyticsId: String
+
+  cleverTapToken: String
+
+  companyName: String
+
+  domainName: String
+
+  domainNames: [String!]
+
+  emailFeedbackTech: String
+
+  faqUrl: String
+
+  forceLogin: Boolean
+
+  isDownloadable: Boolean
+
+  isMonetizationModelEnabled: Boolean
+
+  localizationConstantsFolder: String
+
+  pageEndpoint: String
+
+  serviceType: String
+
+  serviceTypes: [String]
+
+  templateName: String
+
+  timestamp: Float
+
+  trackingBaseUrl: String
+
+  version: String
+
+  apiKeys: [ApiKey]
+
+  analytics: AppcmsAnalytics
+
+  appVersion: AppcmsAppVersion
+
+  beacon: AppcmsBeacon
+
+  brand: AppcmsBrand
+
+  customerService: AppcmsCustomerService
+
+  emailConsent: AppcmsEmailConsent
+
+  features: AppcmsFeatures
+
+  genericMessages: AppcmsGenericMessages
+
+  images: AppcmsImages
+
+  splashVideo: AppcmsSplashVideo
+
+  languages: AppcmsLanguages
+
+  paymentProviders: AppcmsPaymentProvider
+
+  recommendation: AppcmsRecommendation
+
+  security: AppcmsSecurity
+
+  socialMedia: AppcmsSocialMedia
+
+  taxProviders: AppcmsTaxProviders
+
+  teams: AppcmsTeams
+
+  abConfigs: [AbConfig]
+}
+
+type AppcmsPaymentProvider {
+  android: Android
+
+  jioconfiguration: Jioconfiguration
+
+  juspay: Juspay
+
+  payPal: PayPal
+
+  sslcommerz: Sslcommerz
+
+  stripe: Stripe
+}
+
+type AppcmsPlatform {
+  analytics: PlatformAnalytics
+
+  enablePayment: Boolean
+
+  appName: String
+
+  shortAppName: String
+
+  blocksVersion: String
+
+  version: String
+
+  blocksBundleURL: String
+
+  blocksBaseURL: String
+
+  geoRestrictedCountries: [String]
+
+  notifications: PlatformNotifications
+
+  images: PlatformImages
+
+  subscriptionFlowContent: PlatformSubscriptionFlowContent
+
+  tveSettings: PlatformTveSettings
+
+  navigation: PlatformOtherNavigation
+
+  header: [PlatformHeaderNavigation]
+
+  pages: [PlatformPage]
+}
+
+type AppcmsRecommendation {
+  recommendCategories: [RecommendCategory!]
+}
+
+type AppcmsSecurity {
+  playIntegrityEnabled: Boolean
+}
+
+type AppcmsSocialMedia {
+  appleSignin: AppleSignin
+
+  facebook: Facebook
+
+  googlePlus: GooglePlus
+
+  instagram: Instagram
+
+  twitter: Twitter
+
+  youtube: Youtube
+}
+
+type AppcmsSplashVideo {
+  mobileSplashVideo: String
+
+  ottSplashVideo: String
+
+  mobileCreateAccountBgVideo: String
+
+  ottCreateAccountBgVideo: String
+}
+
+type AppcmsTaxProviders {
+  avalara: Avalara
+}
+
+type AppcmsTeam {
+  title: String
+
+  imgUrl: String
+}
+
+type AppcmsTeams {
+  isEnabled: Boolean
+
+  values: [AppcmsTeam]
+}
+
+input AppleSignInInput {
+  identityToken: String!
+
+  email: String
+
+  userId: String
+
+  emailConsent: Boolean
+
+  firstName: String
+
+  deviceId: String!
+
+  deviceName: String!
+
+  platform: EntitlementDevice!
+}
+
+type AppleSignin {
+  clientId: String
+}
+
+type Article implements Content {
+  id: String
+
+  title: String
+
+  gist: Gist
+
+  categories: [Category]
+
+  tags: [Tag]
+
+  articleAssets: ArticleAssets
+
+  creditBlocks: [CreditBlock]
+
+  summaryText: String
+
+  status: String
+
+  year: String
+
+  readTime: String
+
+  author: Author
+
+  publishDate: Int
+
+  related: [Article]
+}
+
+type ArticleAssets {
+  type: String
+
+  url: String
+}
+
+type ArticleDetailModule implements Module {
+  id: String
+
+  title: String
+
+  subtitle: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+
+  contentData: [Content]
+}
+
+type AudioPreview {
+  isAudioPreview: Boolean
+
+  length: Length
+}
+
+type AuthenticationModule implements Module {
+  id: String
+
+  title: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+}
+
+type Author {
+  name: String
+}
+
+type AuthorizationToken {
+  authorizationToken: String
+}
+
+type Avalara {
+  accountName: String
+
+  accountNumber: String
+
+  webserviceUrl: String
+}
+
+type BaseContent {
+  id: String
+
+  title: String
+}
+
+input BaseContentInput {
+  id: String
+
+  title: String
+}
+
+type BaseSubscribeResponse {
+  subscriptionStatus: String
+
+  code: String
+
+  error: String
+
+  message: String
+}
+
+type BettingResponse {
+  enabled: Boolean
+
+  age: Int
+
+  location: String
+}
+
+enum BillingProviders {
+  GP_DATA_BUNDLE
+
+  ROBI
+
+  TIMWE_OOREDOO
+
+  TIMWE_ETISALAT
+
+  TIMWE_BAHRAIN_TELCO
+
+  GRAMEEN_PHONE
+
+  TIMWE_DU
+}
+
+input BkashRequest {
+  subscription: String!
+
+  siteId: String!
+
+  platform: EntitlementDevice!
+
+  planId: String!
+
+  planIdentifier: String!
+
+  userId: String!
+
+  currencyCode: String!
+
+  paymentHandler: String!
+
+  redirectURL: String!
+
+  offerCode: String
+}
+
+type BkashResponse {
+  statusCode: String
+
+  statusMessage: String
+
+  paymentID: String
+
+  bkashURL: String
+
+  callbackURL: String
+
+  successCallbackURL: String
+
+  failureCallbackURL: String
+
+  cancelledCallbackURL: String
+
+  amount: String
+
+  intent: String
+
+  currency: String
+
+  paymentCreateTime: String
+
+  transactionStatus: String
+
+  merchantInvoiceNumber: String
+
+  errorCode: String
+
+  message: String
+}
+
+"""
+The `Boolean` scalar type represents `true` or `false`.
+"""
+scalar Boolean
+
+type Bootstrap {
+  countryCode: String
+
+  site: Site
+
+  appcmsMain: AppcmsMain
+
+  appcmsPlatform: AppcmsPlatform
+
+  personalizedContents: PersonalizedContents
+}
+
+type Border {
+  color: String
+
+  width: String
+}
+
+type BrandCta {
+  primary: StyleAttributesWithBorder
+
+  primaryHover: StyleAttributesWithBorder
+
+  secondary: StyleAttributesWithBorder
+
+  secondaryHover: StyleAttributesWithBorder
+}
+
+type BrandFont {
+  fontFamily: String
+
+  fontUrl: String
+}
+
+type BrandFooter {
+  backgroundColor: String
+
+  link: StyleAttributes
+
+  linkActive: StyleAttributes
+
+  linkHover: StyleAttributes
+
+  textColor: String
+}
+
+type BrandGeneral {
+  backgroundColor: String
+
+  blockTitleColor: String
+
+  boxShadow: String
+
+  pageTitleColor: String
+
+  skeletonColor: String
+
+  textColor: String
+
+  link: StyleAttributes
+
+  linkHover: StyleAttributes
+}
+
+type BrandMetadata {
+  displayDuration: Boolean
+
+  displayPublishDate: Boolean
+
+  displayAuthor: Boolean
+
+  displayHoverState: Boolean
+}
+
+type BrandNavigation {
+  backgroundColor: String
+
+  dropdown: StyleAttributes
+
+  dropdownActive: StyleAttributes
+
+  dropdownHover: StyleAttributes
+
+  link: StyleAttributes
+
+  linkActive: StyleAttributes
+
+  linkHover: StyleAttributes
+}
+
+type BrandPlayer {
+  progressBarBackgroundColor: String
+
+  progressBarColor: String
+}
+
+type BrandScheduleCards {
+  states: BrandScheduleStates
+}
+
+type BrandScheduleStates {
+  pre: String
+
+  live: String
+
+  default: String
+
+  post: String
+
+  losingTeam: String
+}
+
+type BrandStatusBar {
+  backgroundColor: String
+}
+
+type BrandTrayGlow {
+  isTrayGlow: Boolean
+
+  trayGlowColor: String
+}
+
+type Bundle implements Content {
+  id: String
+
+  title: String
+
+  gist: Gist
+
+  categories: [Category]
+
+  tags: [Tag]
+
+  status: String
+
+  creditBlocks: [CreditBlock]
+
+  bundleList: [Content]
+
+  monetizationModels: [MonetizationModel]
+
+  plans: [Plan]
+}
+
+type BundleDetailModule implements Module {
+  id: String
+
+  title: String
+
+  subtitle: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+
+  contentData: [Content]
+}
+
+input CCAvenueRequest {
+  vlTransactionId: String!
+
+  ccAvenueCustomerReferenceId: String!
+
+  ccAvenueToken: String!
+
+  email: String!
+
+  currencyCode: String!
+
+  authorizedUserName: String!
+
+  userId: String!
+}
+
+type CardStatusInfo {
+  address_line1_check: String
+
+  address_zip_check: String
+
+  cvc_check: String
+}
+
+type Category {
+  id: String
+
+  title: String
+
+  gist: MetaGist
+}
+
+type CategoryDetailModule implements Module {
+  id: String
+
+  title: String
+
+  subtitle: String
+
+  moduleType: ModuleType
+
+  contentType: String
+
+  hasNext: Boolean
+
+  setting: ModuleSetting
+
+  filter: ModuleFilter
+
+  metadataMap: Map
+
+  contentData: [Content]
+
+  layout: ModuleLayout
+
+  count: Int
+}
+
+input ChannelIds {
+  key: String!
+
+  value: Boolean!
+}
+
+type ClosedCaption {
+  format: String
+
+  language: String
+
+  size: String
+
+  url: String
+}
+
+interface Content {
+  id: String
+
+  title: String
+
+  gist: Gist
+
+  categories: [Category]
+
+  tags: [Tag]
+
+  creditBlocks: [CreditBlock]
+}
+
+type ContentMetadata {
+  name: String
+
+  value: String
+}
+
+type ContentPersonalization {
+  teams: [BaseContent]
+
+  persons: [BaseContent]
+
+  tags: [BaseContent]
+
+  categories: [BaseContent]
+}
+
+input ContentPersonalizationInput {
+  teams: [BaseContentInput]
+
+  persons: [BaseContentInput]
+
+  tags: [BaseContentInput]
+
+  categories: [BaseContentInput]
+}
+
+enum ContentStatus {
+  open
+
+  closed
+}
+
+enum ContentType {
+  VIDEO
+
+  SERIES
+
+  ARTICLE
+
+  GAME
+
+  VIDEOPLAYLIST
+
+  BUNDLE
+}
+
+type ConversionApi {
+  accessToken: String
+
+  conversionApi: Boolean
+
+  pixelID: String
+}
+
+type CountrySpecificProvider {
+  countryCode: String
+
+  primary_provider: String
+
+  secondary_provider: String
+}
+
+type Credit {
+  title: String
+}
+
+type CreditBlock {
+  title: String
+
+  credits: [Credit]
+}
+
+type CuratedTrayModule implements Module {
+  id: String
+
+  title: String
+
+  subtitle: String
+
+  moduleType: ModuleType
+
+  contentType: String
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  contentData: [Content]
+
+  layout: ModuleLayout
+}
+
+enum Device {
+  WEB
+
+  IOS
+
+  ANDROID
+
+  WINDOWS10DESKTOP
+
+  XBOX
+
+  ROKU
+
+  LGTV
+
+  TIVO
+
+  FIRETV
+
+  JIOSTB
+
+  APPLETV
+
+  VIZIOTV
+
+  SAMSUNGTV
+
+  METROLOGICAL
+
+  MITV
+
+  CORPUS
+
+  XFINITYX1
+}
+
+enum EntitlementDevice {
+  android_tablet
+
+  web_browser
+
+  ios_ipad
+
+  ios_phone
+
+  android_phone
+
+  jio_stb
+
+  ios_apple_tv
+
+  roku_box
+
+  fire_tv
+
+  smart_tv_samsung
+
+  smart_tv_lg
+
+  windows_xbox
+}
+
+type EpgModule implements Module {
+  id: String
+
+  title: String
+
+  subtitle: String
+
+  moduleType: ModuleType
+
+  contentType: String
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  contentData: [Content]
+
+  layout: ModuleLayout
+}
+
+type Episode implements Content {
+  id: String
+
+  title: String
+
+  gist: Gist
+
+  categories: [Category]
+
+  tags: [Tag]
+
+  optionalTags: [Tag]
+
+  creditBlocks: [CreditBlock]
+
+  monetizationModels: [MonetizationModel]
+
+  plans: [Plan]
+
+  pricing: Pricing
+
+  year: String
+
+  free: Boolean
+
+  """
+  video assets
+  """
+  streamingInfo: StreamingInfo
+
+  seriesId: String
+
+  publishDate: Int
+}
+
+enum ErrorCode {
+  UNKNOWN
+
+  SITE_NOT_FOUND
+
+  PAGE_NOT_FOUND
+
+  PAGE_SERVICE_NOT_AVAILABLE
+
+  SITE_MISSING
+
+  EMAIL_ALREADY_LINKED
+
+  SPECIAL_CHARACTER_NOT_ALLOWED
+
+  EMAIL_VERIFICATION_FAILED
+
+  MAX_NUMBER_OF_OTP_EXCEEDED
+
+  OTP_SENT_FAILED
+
+  PHONE_NOT_VALID
+
+  CROSS_COUNTRY_PHONE
+
+  NOT_FOUND
+
+  MAX_NUMBER_OF_OTP_VERIFY_ATTEMP_EXCEEDED
+
+  INTERNAL_ERROR
+
+  BAD_REQUEST
+
+  EMAIL_OR_PHONE_NOT_VALID
+
+  LAYOUT_NOT_FOUND
+
+  MAIN_FILE_NOT_FOUND
+
+  PLATFORM_FILE_NOT_FOUND
+
+  EXPERIMENT_FEATURE_NOT_ENABLED
+
+  EXPERIMENT_FEATURE_NOT_EXIST
+
+  SEARCH_SERVICE_NOT_AVAILABLE
+
+  CONTENT_SERVICE_NOT_AVAILABLE
+
+  SERVICE_NOT_AVAILABLE
+
+  VALUE_MISSING
+}
+
+type ErrorIdentity {
+  code: ErrorCode!
+
+  error: String!
+
+  message: String!
+}
+
+type EventSchedule {
+  startDate: Float
+
+  endDate: Float
+
+  venue: Venue
+}
+
+type ExperimentResponse {
+  variationId: Int!
+}
+
+type Facebook {
+  appId: String
+
+  clientToken: String
+
+  pixelId: String
+
+  url: String
+}
+
+type FeatureDetails {
+  textToDisplay: String
+
+  value: String
+
+  valueType: String
+}
+
+"""
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).
+"""
+scalar Float
+
+type FontSetting {
+  fontFamilyName: String
+
+  fontFamilyUrl: String
+
+  fontSize: String
+
+  fontWeight: String
+}
+
+type FooterModule implements Module {
+  id: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  layout: ModuleLayout
+}
+
+input ForgotPasswordInput {
+  countryCode: String
+
+  email: String!
+
+  deviceId: String
+}
+
+type ForgotPasswordResponse {
+  emailSent: Boolean!
+}
+
+type FreePreview {
+  allow_recurring_plays: Boolean
+
+  isFreePreview: Boolean
+
+  length: Length
+
+  per_video: Boolean
+}
+
+type FreshChat {
+  appID: String
+
+  enableFreshChat: Boolean
+
+  hashKey: String
+
+  key: String
+}
+
+type Game implements Content {
+  id: String
+
+  title: String
+
+  gist: Gist
+
+  categories: [Category]
+
+  tags: [Tag]
+
+  creditBlocks: [CreditBlock]
+
+  homeTeam: Team
+
+  awayTeam: Team
+
+  highlights: [Video]
+
+  related: [Video]
+
+  livestreams: [Video]
+
+  preview: Video
+
+  webliveUrl: String
+
+  author: Author
+
+  currentState: GameState
+
+  states: GameStates
+
+  schedules: [EventSchedule]
+
+  metadata: [ContentMetadata]
+
+  sportsRadar: SportsRadar
+
+  league: League
+
+  score: GameScore
+
+  broadcaster: String
+
+  ticketUrl: String
+
+  publishDate: Int
+
+  ticketMasterId: String
+}
+
+type GameDetailModule implements Module {
+  id: String
+
+  title: String
+
+  subtitle: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+
+  contentData: [Content]
+}
+
+type GameScheduleData {
+  limit: Int
+
+  offset: Int
+
+  items: [Game]
+}
+
+type GameScore {
+  """
+  current status of the Game
+  """
+  status: String
+
+  """
+  like quarter
+  """
+  type: String
+
+  """
+  session number like quarter 1
+  """
+  number: Int
+
+  """
+  score of home team
+  """
+  homePoint: Int
+
+  """
+  score of away team
+  """
+  awayPoint: Int
+}
+
+enum GameState {
+  default
+
+  pre
+
+  post
+
+  live
+
+  end
+}
+
+type GameStateInfo {
+  startDateTime: Float
+
+  endDateTime: Float
+}
+
+type GameStates {
+  default: GameStateInfo
+
+  pre: GameStateInfo
+
+  live: GameStateInfo
+
+  post: GameStateInfo
+
+  end: GameStateInfo
+}
+
+type GeneratedTrayModule implements Module {
+  id: String
+
+  title: String
+
+  subtitle: String
+
+  moduleType: ModuleType
+
+  contentType: String
+
+  setting: ModuleSetting
+
+  filter: ModuleFilter
+
+  metadataMap: Map
+
+  contentData: [Content]
+
+  layout: ModuleLayout
+}
+
+type GetProfileResponse {
+  registeredOn: String
+
+  whatsappConsent: Boolean
+
+  lastLoginDate: String
+
+  registrationIp: String
+
+  site: String
+
+  email: String
+
+  countryName: String
+
+  country: String
+
+  name: String
+
+  state: String
+
+  city: String
+
+  registerdVia: String
+
+  emailConsent: Boolean
+
+  registeredDevice: String
+
+  userId: String
+
+  provider: String
+
+  isSubscribed: Boolean
+
+  id: String
+
+  phone: String
+
+  passwordEnabled: Boolean
+
+  providers: [String]
+
+  stateName: String
+
+  postalcode: String
+
+  isActive: Int
+
+  timezone: String
+
+  lastLoginIp: String
+
+  profiles: [ProfileRecord]
+
+  subscription: SubscriptionData
+
+  monetizationPlan: MonetizationPlan
+
+  userState: String
+
+  phoneNumber: String
+
+  unverifiedEmail: String
+
+  unverifiedPhone: String
+
+  mvpdProvider: String
+}
+
+type Gist {
+  id: String
+
+  site: String
+
+  permalink: String
+
+  title: String
+
+  description: String
+
+  imageGist: ImageGist
+
+  primaryCategory: Category
+
+  contentType: ContentType
+
+  languageCode: String
+
+  timezone: String
+
+  featuredTag: Tag
+
+  scheduleStartDate: Int
+
+  scheduleEndDate: Int
+}
+
+type GoogleCredentials {
+  web: String
+
+  ios: String
+
+  android: String
+}
+
+type GooglePlus {
+  signin: Boolean
+}
+
+type HistoryModule implements Module {
+  id: String
+
+  title: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+}
+
+"""
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as "4") or integer (such as 4) input value will be accepted as an ID.
+"""
+scalar ID
+
+type ImageGist {
+  r32x9: String
+
+  r16x9: String
+
+  r4x3: String
+
+  r3x4: String
+
+  r1x1: String
+
+  r9x16: String
+}
+
+input InitiatePasswordlessSignInput {
+  phoneNumber: String
+
+  email: String
+
+  deviceId: String
+
+  deviceName: String
+
+  platform: EntitlementDevice
+}
+
+type InitiateSignOtpResponse {
+  key: String
+}
+
+type Insight {
+  id: String
+
+  content: String
+
+  relevancyIndex: Int
+
+  createdAt: String
+
+  materials: [InsightMaterial]
+}
+
+type InsightMaterial {
+  id: String
+
+  tabular: InsightMaterialTabular
+}
+
+type InsightMaterialTabular {
+  id: String
+
+  title: String
+
+  content: String
+
+  displayType: String
+
+  data: [[InsightMaterialTabularData]]
+}
+
+type InsightMaterialTabularData {
+  isHighlighted: Boolean
+
+  value: String
+}
+
+enum InsightTypeOption {
+  team_betting_trends
+}
+
+type InsightsResponse {
+  results: [Insight]
+
+  limit: Int!
+
+  offset: Int!
+
+  vlId: String
+}
+
+type Instagram {
+  url: String
+}
+
+"""
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+"""
+scalar Int
+
+type IntentMetadata {
+  next_action: String
+
+  object: String
+
+  on_behalf_of: String
+
+  payment_method: String
+}
+
+input IosIapRequest {
+  countryCode: String!
+
+  siteId: String!
+
+  receiptVersion: String!
+
+  addEntitlement: Boolean!
+
+  receipt: String!
+
+  planId: String!
+
+  platform: EntitlementDevice!
+
+  userId: String!
+
+  subscription: String!
+
+  planIdentifier: String!
+
+  email: String!
+
+  paymentUniqueId: String!
+}
+
+type IosIapResponse {
+  subscriptionStatus: String
+
+  code: String
+
+  message: String
+}
+
+input JioSignInInput {
+  ssoToken: String!
+
+  subscriberId: String
+
+  deviceId: String
+
+  deviceName: String
+
+  platform: EntitlementDevice
+}
+
+type Jioconfiguration {
+  appName: String
+
+  bucketPath: String
+
+  certName: String
+
+  elasticSearchApi: String
+
+  isActive: Boolean
+
+  jioPassphrase: String
+
+  keyName: String
+
+  special_plan_identifier: String
+
+  subscribeApi: String
+
+  usersLimit: String
+
+  xApiKey: String
+}
+
+type Juspay {
+  country: String
+
+  isActive: Boolean
+
+  mandateMaxAmount: String
+
+  merchantId: String
+
+  return_url: String
+}
+
+input JuspayRequest {
+  currencyCode: String!
+
+  email: String!
+
+  authorizedUserName: String!
+
+  phoneNumber: String!
+
+  country: String!
+
+  planIdentifier: String!
+
+  platform: EntitlementDevice!
+
+  planId: String!
+
+  encodedUrl: String!
+
+  offerCode: Boolean
+
+  options: Options!
+
+  type: String
+}
+
+type Language {
+  code: String
+
+  localizedTitle: String
+
+  name: String
+}
+
+type League {
+  id: String
+
+  title: String
+}
+
+enum LeagueOption {
+  NBA
+
+  NHL
+}
+
+type Length {
+  multiplier: String
+
+  unit: String
+}
+
+type LiveDetails {
+  isLowLatency: Boolean
+
+  isDvrEnabled: Boolean
+
+  startOverTime: Int
+}
+
+scalar Map
+
+type MastheadModule implements Module {
+  id: String
+
+  title: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+}
+
+type MetaGist {
+  imageGist: ImageGist
+}
+
+type MetadataMap {
+  title: String
+
+  keywords: String
+
+  description: String
+
+  contentUrl: String
+
+  image: String
+
+  h1Title: String
+
+  h2Title: String
+
+  redirectUrl: String
+
+  redirectCode: String
+
+  contentType: String
+
+  noIndex: Boolean
+
+  uploadDate: Int
+
+  duration: Int
+
+  isLiveStream: Boolean
+
+  thumbnailUrl: ImageGist
+}
+
+interface Module {
+  id: String
+
+  moduleType: ModuleType
+
+  layout: ModuleLayout
+}
+
+type ModuleFilter {
+  limit: Int
+
+  offset: Int
+
+  liveVideosOnly: Boolean
+
+  vodOnly: Boolean
+
+  liveVideoFrequency: Any
+
+  sortBy: String
+
+  categories: [ModuleFilterCategory]
+
+  tags: [ModuleFilterTag]
+}
+
+type ModuleFilterCategory {
+  id: String
+
+  title: String
+
+  permalink: String
+}
+
+type ModuleFilterTag {
+  id: String
+
+  title: String
+
+  permalink: String
+}
+
+type ModuleFontSetting {
+  title: FontSetting
+
+  subtitle: FontSetting
+
+  trayItemTitle: FontSetting
+
+  team: FontSetting
+
+  button: FontSetting
+
+  articleTitle: FontSetting
+
+  articleDescription: FontSetting
+
+  tab: FontSetting
+
+  widget: FontSetting
+
+  videoTitle: FontSetting
+
+  videoDescription: FontSetting
+
+  actionButton: FontSetting
+
+  field: FontSetting
+
+  deviceName: FontSetting
+
+  description: FontSetting
+
+  planTitle: FontSetting
+
+  planDescription: FontSetting
+
+  card: FontSetting
+
+  searchSuggestionTitle: FontSetting
+
+  searchSuggestionDate: FontSetting
+
+  navigation: FontSetting
+}
+
+type ModuleLayout {
+  id: String
+
+  settings: Map
+
+  styles: String
+
+  view: String
+
+  type: String
+
+  blockName: String
+
+  isMasthead: Boolean
+
+  fontSetting: ModuleFontSetting
+}
+
+type ModuleSetting {
+  hideDate: Boolean
+
+  hideTitle: Boolean
+
+  lazyLoad: Boolean
+
+  seeAll: Boolean
+
+  seeAllCard: Boolean
+
+  showMore: Boolean
+
+  seeAllPermalink: String
+
+  showMoreCta: String
+}
+
+enum ModuleType {
+  AuthenticationModule
+
+  CuratedTrayModule
+
+  GeneratedTrayModule
+
+  ViewPlanModule
+
+  MastheadModule
+
+  FooterModule
+
+  TextModule
+
+  SubscriptionModule
+
+  UserManagementModule
+
+  TveModule
+
+  TveActivateModule
+
+  TagDetailModule
+
+  CategoryDetailModule
+
+  VideoDetailModule
+
+  ArticleDetailModule
+
+  VideoPlaylistDetailModule
+
+  ScheduleModule
+
+  GameDetailModule
+
+  BundleDetailModule
+
+  SportRadarModule
+
+  HistoryModule
+
+  QueueModule
+
+  ShowDetailModule
+
+  SearchModule
+
+  StandaloneVideoPlayerModule
+
+  EpgModule
+}
+
+type MonetizationModel {
+  id: String
+
+  type: String
+}
+
+type MonetizationPlan {
+  identifier: String
+
+  metadata: [typeNameValue]
+
+  updateDate: String
+
+  addedDate: String
+
+  featureSetting: PlanFeatureSettings
+
+  scheduledFromDate: String
+
+  description: String
+
+  site: String
+
+  planDetails: [PlansDetails]
+
+  objectKey: String
+
+  renewable: Boolean
+
+  renewalCycleType: String
+
+  name: String
+
+  renewalCyclePeriodMultiplier: Int
+
+  siteOwner: String
+
+  id: String
+
+  planDisplayOrder: Int
+
+  monetizationModel: String
+
+  identifier_vizio_in: String
+
+  identifier_vizio_us: String
+}
+
+type Mpeg {
+  url: String
+
+  renditionValue: String
+}
+
+type Mutation {
+  health(check: Boolean): Boolean
+
+  identitySignUpByEmail(site: String!, device: EntitlementDevice!, input: SignUpByEmailInput!): TokenResponseSignUp
+
+  identitySignInByEmail(site: String!, device: EntitlementDevice!, input: SignInByEmailInput!): TokenResponseSignIn
+
+  identitySignInByPhone(site: String!, device: EntitlementDevice!, input: SignInByPhoneInput!): TokenResponseSignIn
+
+  identitySignOutUser(site: String!, device: EntitlementDevice!): ResponseOK
+
+  identitySignInApple(site: String!, device: EntitlementDevice!, input: AppleSignInInput!): TokenResponseSignIn
+
+  identitySignInJio(site: String!, device: EntitlementDevice!, input: JioSignInInput!): TokenResponseSignIn
+
+  identityRefreshToken(site: String!, device: EntitlementDevice!, refreshToken: String!): RefreshTokenResponse
+
+  identityForgotPassword(site: String!, input: ForgotPasswordInput!): ForgotPasswordResponse
+
+  identityResetPassword(site: String!, input: ResetPasswordInput!): ResetPasswordResponse
+
+  identityResetPasswordValidation(site: String!, token: String!): ResetPasswordValidationResponse
+
+  identityUserProfileUpdate(site: String!, device: EntitlementDevice!, input: UpdateUserInput!): TokenResponseSignIn
+
+  identitySigninGoogle(site: String!, device: EntitlementDevice!, input: SignInGoogleInput!): TokenResponseSignIn
+
+  identitySignInAnonymous(site: String!, input: SignInAnonymousInput): AuthorizationToken
+
+  identitySignInIos(site: String!, input: SignInIosInput): TokenResponseDevice
+
+  identitySignInAndroid(site: String!, input: SignInAndroidInput): TokenResponseDevice
+
+  identitySignInTve(site: String!, input: SignInTveInput): TokenResponseDevice
+
+  identitySignOutTve(site: String!): ResponseOK
+
+  identitySignInFacebook(site: String!, input: SignInFacebookInput!): TokenResponseSignIn
+
+  identityResendOtp(site: String!, phoneNumber: String!): ResponseOK
+
+  """
+  Identity API to initiate OTP login via mobile or email
+  """
+  identityInitiateSignOtp(site: String!, device: EntitlementDevice!, input: InitiatePasswordlessSignInput!): InitiateSignOtpResponse
+
+  """
+  Identity API to verify OTP recieved on mobile or email
+  """
+  identitySignOtpPasswordless(site: String!, device: EntitlementDevice!, input: SignInByPhoneOrEmailInput!): TokenResponseSignIn
+
+  """
+  Identity API to update the user profile information while onboarding process
+  """
+  identityUpdateUserProfileInitial(site: String!, input: UpdateUserIntitalInput!): UserProfileIntitalResponse
+
+  subscriptionStripe(site: String!, input: StripeRequest!): SubscriptionPaymentData
+
+  subscriptionIosInApp(site: String!, input: IosIapRequest!): IosIapResponse
+
+  subscriptionAmazonInApp(site: String!, countryCode: String!, input: AmazonIapRequest): AmazonIapResponse
+
+  subscriptionRokuInApp(site: String!, input: RokuIapRequest!): SubscriptionPaymentData
+
+  subscriptionAndroidInApp(site: String!, input: AndroidIapRequest!): BaseSubscribeResponse
+}
+
+type OgDetails {
+  title: String
+
+  description: String
+
+  thumbnailUrl: String
+}
+
+input Options {
+  create_mandate: String!
+
+  get_client_auth_token: Boolean!
+}
+
+type Orientation {
+  tablet: Tablet
+}
+
+type OtpResponse {
+  phoneNumber: String
+
+  sent: String
+}
+
+type OtpValue {
+  otp_enabled: Boolean
+}
+
+enum PageContentType {
+  Any
+
+  Video
+
+  Series
+}
+
+type PageData {
+  code: String
+
+  message: String
+
+  id: String
+
+  title: String
+
+  metadataMap: MetadataMap
+
+  ogDetails: OgDetails
+
+  moduleCount: Int
+
+  moduleIds: [String]
+
+  modules: [Module]
+}
+
+type PageLayout {
+  moduleList: [ModuleLayout]
+}
+
+enum PayMethods {
+  AMAZONPAY_WALLET
+
+  FREECHARGE_WALLET
+
+  GOOGLEPAY_WALLET
+
+  MOBIKWIK_WALLET
+
+  PAYPAL_WALLET
+
+  PAYTM_WALLET
+
+  PHONEPE_WALLET
+
+  CREDIT_CARDS
+
+  DEBIT_CARDS
+
+  NET_BANKING
+
+  UPI
+}
+
+type PayPal {
+  clientId: String
+
+  clientSecret: String
+
+  isActive: Boolean
+}
+
+input PaygateRequest {
+  appliedOffers: [String]
+
+  email: String!
+
+  locale: String!
+
+  nameOnCard: String!
+
+  planId: String!
+
+  redirect: String!
+
+  platform: EntitlementDevice!
+}
+
+type PaygateResponse {
+  PAY_REQUEST_ID: String
+
+  REFERENCE: String
+
+  CHECKSUM: String
+
+  description: String
+
+  error: String
+}
+
+type PaymentMethodOptions {
+  card: cardInfo
+}
+
+type Person implements Content {
+  id: String
+
+  title: String
+
+  gist: Gist
+
+  categories: [Category]
+
+  tags: [Tag]
+
+  creditBlocks: [CreditBlock]
+}
+
+type PersonalizedContents {
+  teams: [Team]
+
+  persons: [Person]
+
+  categories: [Category]
+
+  tags: [Tag]
+}
+
+type PhoneType {
+  phone: String
+
+  country: String
+}
+
+type Plan {
+  type: String
+
+  planIds: [String]
+
+  planGroupIds: [String]
+}
+
+type PlanDetails {
+  featureDetails: [FeatureDetails]
+
+  supportedDevices: [SupportedDevices]
+
+  allowedPayMethods: [PayMethods]
+
+  carrierBillingProviders: [BillingProviders]
+}
+
+type PlanFeatureSettings {
+  numberOfAllowedStreams: Int
+
+  contentConsumption: [String]
+
+  includingAds: Boolean
+
+  isHdStreaming: Boolean
+
+  isBeamingAllowed: Boolean
+
+  isDownloadAllowed: Boolean
+
+  numberOfAllowedDevices: Int
+}
+
+type PlansDetails {
+  isRentEnabled: Boolean
+
+  redirectUrl: String
+
+  isPurchaseEnabled: Boolean
+
+  recurringPaymentAmount: Float
+
+  recurringPaymentCurrencyCode: String
+
+  countryCode: String
+
+  isDefault: Boolean
+
+  displayStrikeThroughPrice: Boolean
+
+  scheduledFromDate: String
+
+  supportedDevices: [String]
+
+  visible: Boolean
+
+  taxIncluded: Boolean
+
+  numberOfAllowedStreams: Int
+
+  numberOfAllowedDevices: Int
+
+  title: String
+
+  description: String
+
+  hidePlanPrice: Boolean
+}
+
+type PlatformAnalytics {
+  googleTagManagerId: String
+
+  googleAnalyticsId: String
+}
+
+type PlatformHeaderNavigation {
+  data: [PlatformNavigation]
+
+  id: String
+
+  title: String
+
+  type: Boolean
+}
+
+type PlatformImages {
+  mobileAppIcon: String
+
+  mobileLogo: String
+
+  desktopLogo: String
+
+  favicon: Map
+}
+
+type PlatformNavigation {
+  title: String
+
+  pageID: String
+
+  displayedPath: String
+
+  url: String
+
+  anchor: String
+
+  dragDropID: Int
+
+  chromeCustomTab: Boolean
+
+  newTab: Boolean
+
+  accessLevels: PlatformNavigationAccessLevel
+
+  items: [PlatformNavigation]
+
+  icon: String
+}
+
+type PlatformNavigationAccessLevel {
+  subscribed: Boolean
+
+  loggedIn: Boolean
+
+  loggedOut: Boolean
+
+  tve: Boolean
+
+  purchased: Boolean
+}
+
+type PlatformNavigationPrimaryCta {
+  ctaText: String
+
+  displayedPath: String
+
+  helloText: String
+
+  pageID: String
+
+  url: String
+
+  displayBannerOnMobile: Boolean
+
+  loginCtaText: String
+
+  logoutCtaText: String
+
+  placement: String
+
+  accessLevels: PlatformNavigationAccessLevel
+}
+
+type PlatformNavigationSettings {
+  primaryCta: PlatformNavigationPrimaryCta
+}
+
+type PlatformNotificationUrbanAirship {
+  key: String
+}
+
+type PlatformNotificationWebPush {
+  gcmSenderID: String
+
+  bodyText: String
+
+  okButtonText: String
+
+  titleText: String
+
+  rejectButtonText: String
+}
+
+type PlatformNotifications {
+  getSocialAppId: String
+
+  webPush: PlatformNotificationWebPush
+
+  anonymousUserWebPush: PlatformNotificationWebPush
+
+  urbanAirship: PlatformNotificationUrbanAirship
+
+  region: String
+}
+
+type PlatformOtherNavigation {
+  settings: PlatformNavigationSettings
+
+  footer: [PlatformNavigation]
+
+  tabBar: [PlatformNavigation]
+
+  right: [PlatformNavigation]
+
+  user: [PlatformNavigation]
+
+  primary: [PlatformNavigation]
+}
+
+type PlatformPage {
+  pageName: String
+
+  pageType: String
+
+  pageID: String
+
+  pageUI: String
+
+  pageAPI: String
+
+  pagePath: String
+
+  version: String
+
+  geoTargetedPageIds: Map
+
+  isDefault: Boolean
+
+  supportExpandedView: Boolean
+
+  isFixedFocus: Boolean
+
+  disableContentFilter: Boolean
+
+  pageFn: String
+}
+
+type PlatformSubscriptionFlowContent {
+  overlayMessage: String
+
+  subscriptionButtonText: String
+
+  loginButtonText: String
+}
+
+type PlatformTveSettings {
+  tveProvider: String
+
+  platformID: String
+
+  resourceID: String
+
+  softwareStatement: String
+
+  requestorID: String
+
+  tvProviderListUrl: String
+
+  signedRequestorID: String
+
+  urlScheme: String
+}
+
+input Preferences {
+  preferredTeam: String
+}
+
+input PrepaidRequest {
+  userId: String!
+
+  siteId: String!
+
+  appliedOffers: [String!]!
+
+  email: String
+
+  platform: EntitlementDevice!
+}
+
+type Pricing {
+  type: String
+
+  currency: String
+
+  rent: String
+
+  purchase: Purchase
+}
+
+type ProfileRecord {
+  profileName: String
+
+  userId: String
+
+  isDefault: String
+
+  addedDate: String
+
+  site: String
+
+  profileType: String
+
+  profileId: String
+
+  alertPersonalization: AlertPersonalization
+
+  contentPersonalization: ContentPersonalization
+}
+
+type Purchase {
+  sd: Float
+
+  hd: Float
+
+  uhd: Float
+}
+
+type Query {
+  health(check: Boolean): Boolean
+
+  bootstrap(device: Device!, domain: String, siteId: String, country: String, language: String): Bootstrap
+
+  experimentVariation(userId: String!, featureIdentifier: String!): ExperimentResponse
+
+  gameSchedule(site: String!, limit: Int, offset: Int, startDate: Int, endDate: Int, teamIds: [String!], sortBy: String, sortOrder: SortOrder): GameScheduleData
+
+  identityUserProfile(site: String!): GetProfileResponse
+
+  identityServerSideToken(site: String!): AuthorizationToken
+
+  page(site: String!, path: String, pageId: String, device: Device!, includeContent: Boolean, moduleLimit: Int, moduleOffset: Int, languageCode: String, countryCode: String, userState: String, modules: [String!], offset: Int, contentType: String): PageData
+
+  search(site: String!, keyword: String!, languageCode: String, userState: String, limit: Int, offset: Int, relatedSearch: Boolean, types: [String!]): SearchData
+
+  """
+  get the game insight by sportRadar GameID or PlayerID or TeamID
+  """
+  gameInsights(site: String!, league: LeagueOption!, srGameId: String, srPlayerId: String, srTeamId: String, "offset should be multiple of 20" offset: Int = 0, insightType: InsightTypeOption): InsightsResponse
+}
+
+type QueueModule implements Module {
+  id: String
+
+  title: String
+
+  limit: Int
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+}
+
+type Ratings {
+  appVisit: String
+
+  ratings_enabled: Boolean
+
+  videoCount: String
+}
+
+type RecommendCategory {
+  imgUrl: String
+
+  title: String
+}
+
+type RecordType {
+  win: Int
+
+  loss: Int
+}
+
+type RefreshTokenResponse {
+  authorizationToken: String!
+
+  refreshToken: String!
+
+  userId: String!
+}
+
+input ResetPasswordInput {
+  resetToken: String!
+
+  oldPassword: String!
+
+  newPassword: String!
+}
+
+type ResetPasswordResponse {
+  passwordUpdated: Boolean!
+
+  email: String
+}
+
+type ResetPasswordValidationResponse {
+  isValidToken: Boolean!
+}
+
+type ResponseOK {
+  status: String!
+}
+
+type Restrictions {
+  zipcode: Zipcode
+}
+
+input RokuIapRequest {
+  channelId: String!
+
+  channelName: String!
+
+  siteId: String!
+
+  planId: String!
+
+  planIdentifier: String!
+
+  paymentUniqueId: String!
+
+  userId: String!
+
+  platform: EntitlementDevice!
+}
+
+type SEO {
+  keywords: [String]
+
+  title: String
+
+  h1Title: String
+
+  h2Title: String
+
+  description: String
+
+  noIndex: Boolean
+}
+
+type ScheduleModule implements Module {
+  id: String
+
+  title: String
+
+  subtitle: String
+
+  moduleType: ModuleType
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+
+  contentData: [Content]
+}
+
+type SearchData {
+  records: [Content]!
+
+  related: [Content]!
+}
+
+type SearchModule implements Module {
+  id: String
+
+  title: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+}
+
+type Season {
+  id: String
+
+  title: String
+
+  episodes: [Episode]
+}
+
+type SeasonRecords {
+  REG: RecordType
+
+  PIT: RecordType
+
+  PST: RecordType
+
+  PRE: RecordType
+}
+
+type Series implements Content {
+  id: String
+
+  title: String
+
+  contentType: ContentType
+
+  gist: Gist
+
+  categories: [Category]
+
+  tags: [Tag]
+
+  creditBlocks: [CreditBlock]
+
+  monetizationModels: [MonetizationModel]
+
+  plans: [Plan]
+
+  pricing: Pricing
+
+  """
+  seasons of a series
+  """
+  seasons: [Season]
+
+  publishDate: Int
+}
+
+type SetupIntentResponse {
+  application: String
+
+  cancellation_reason: String
+
+  client_secret: String
+
+  created: Int
+
+  customer: String
+
+  description: String
+
+  flow_directions: String
+
+  id: String
+
+  last_setup_error: String
+
+  latest_attempt: String
+
+  livemode: Boolean
+
+  mandate: String
+
+  metadata: IntentMetadata
+
+  next_action: String
+
+  object: String
+
+  on_behalf_of: String
+
+  payment_method: String
+
+  payment_method_options: PaymentMethodOptions
+
+  payment_method_types: [String]
+
+  single_use_mandate: String
+
+  status: String
+
+  usage: String
+}
+
+type ShowDetailModule implements Module {
+  id: String
+
+  title: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  contentData: [Content]
+
+  layout: ModuleLayout
+}
+
+input SignInAndroidInput {
+  paymentUniqueId: String!
+
+  deviceId: String!
+
+  deviceName: String!
+
+  platform: EntitlementDevice!
+}
+
+input SignInAnonymousInput {
+  countryisocode: String
+
+  postalcode: String
+
+  deviceId: String
+}
+
+input SignInByEmailInput {
+  email: String!
+
+  password: String!
+
+  deviceId: String
+
+  deviceName: String
+
+  platform: EntitlementDevice
+}
+
+input SignInByPhoneInput {
+  phoneNumber: String!
+
+  otpValue: String!
+
+  requestType: String
+
+  whatsappConsent: Boolean
+
+  deviceId: String
+
+  deviceName: String
+
+  platform: EntitlementDevice
+}
+
+input SignInByPhoneOrEmailInput {
+  key: String
+
+  otpValue: String!
+
+  emailConsent: Boolean
+
+  deviceId: String
+
+  deviceName: String
+
+  platform: EntitlementDevice
+}
+
+input SignInFacebookInput {
+  facebookToken: String!
+
+  emailConsent: Boolean
+
+  deviceId: String
+
+  deviceName: String
+
+  platform: EntitlementDevice
+
+  campaign: String
+
+  campaign_source: String
+
+  campaign_medium: String
+
+  ad: String
+
+  ad_set: String
+
+  mappingId: String
+}
+
+input SignInGoogleInput {
+  googleToken: String!
+
+  emailConsent: Boolean
+
+  deviceId: String!
+
+  deviceName: String
+
+  platform: EntitlementDevice
+}
+
+input SignInIosInput {
+  receipt: String!
+
+  paymentUniqueId: String
+
+  deviceId: String!
+
+  deviceName: String!
+
+  platform: EntitlementDevice!
+}
+
+input SignInTveInput {
+  userId: String!
+
+  tveUserId: String
+
+  mvpdProvider: String
+
+  provider: String!
+
+  resourceIdAccess: [ChannelIds]
+
+  idpLogo: String
+
+  idpName: String
+
+  email: String
+
+  name: String
+
+  password: String
+
+  requestType: String
+
+  isIgnorePassword: Boolean
+
+  emailConsent: Boolean
+
+  adobeMetadata: AdobeMetadata
+
+  platform: EntitlementDevice!
+
+  device: SupportedDevices!
+
+  deviceId: String!
+
+  deviceName: String
+}
+
+input SignUpByEmailInput {
+  email: String!
+
+  password: String!
+
+  name: String!
+
+  emailConsent: Boolean
+
+  accessToken: String
+
+  phoneNumber: String
+
+  isExcludedCountry: Boolean
+
+  requestType: String
+
+  transactionId: String
+
+  whatsappConsent: Boolean
+
+  tveUserId: String
+
+  preferences: Preferences
+
+  deviceId: String
+
+  deviceName: String
+
+  platform: EntitlementDevice
+
+  campaign: String
+
+  campaign_source: String
+
+  campaign_medium: String
+
+  ad: String
+
+  ad_set: String
+
+  mappingId: String
+}
+
+type Site {
+  id: String
+
+  siteInternalName: String
+
+  domainNames: [String]
+
+  settings: SiteSettings
+}
+
+type SiteSettings {
+  social: Social
+}
+
+type Social {
+  google: SocialGoogle
+}
+
+type SocialGoogle {
+  authenticate: Boolean
+
+  credentials: GoogleCredentials
+}
+
+enum SortOrder {
+  ASC
+
+  DESC
+}
+
+type SportRadarModule implements Module {
+  id: String
+
+  title: String
+
+  moduleType: ModuleType
+
+  rawText: String
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+}
+
+type SportsRadar {
+  id: String
+}
+
+type Sslcommerz {
+  cancelUrl: String
+
+  country: String
+
+  environment: String
+
+  failUrl: String
+
+  isActive: Boolean
+
+  refundApiUrl: String
+
+  sessionApiUrl: String
+
+  storeId: String
+
+  successUrl: String
+
+  transactionStatusApiUrl: String
+
+  validationApiUrl: String
+}
+
+input SslcommerzRequest {
+  offerCode: String
+
+  phoneNumber: String!
+
+  planId: String!
+}
+
+type StandaloneVideoPlayerModule implements Module {
+  id: String
+
+  title: String
+
+  subtitle: String
+
+  moduleType: ModuleType
+
+  contentType: String
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  contentData: [Content]
+
+  layout: ModuleLayout
+}
+
+type StreamingInfo {
+  isLiveStream: Boolean
+
+  drmEnabled: Boolean
+
+  isSSAIEnabled: Boolean
+}
+
+"""
+The `String`scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+"""
+scalar String
+
+type Stripe {
+  allowOffers: Boolean
+
+  apiKey: String
+
+  country: String
+
+  isActive: Boolean
+
+  publishKey: String
+
+  transactionalPayment: Boolean
+}
+
+input StripeRequest {
+  subscription: String!
+
+  siteId: String!
+
+  platform: EntitlementDevice!
+
+  planId: String!
+
+  planIdentifier: String!
+
+  userId: String!
+
+  currencyCode: String!
+
+  stripeToken: String!
+
+  requestId: String!
+}
+
+type StyleAttributes {
+  textColor: String
+
+  backgroundColor: String
+
+  style: [String]
+}
+
+type StyleAttributesWithBorder {
+  backgroundColor: String
+
+  textColor: String
+
+  style: [String]
+
+  border: Border
+}
+
+type Subscription {
+  health(userId: String!): Timer!
+}
+
+type SubscriptionData {
+  subscriptionStatus: String
+
+  subscriptionInfo: SubscriptionInfo
+}
+
+type SubscriptionInfo {
+  numberOfAllowedStreams: Int
+
+  planId: String
+
+  planAmount: Float
+
+  siteId: String
+
+  totalAmount: Float
+
+  countryCode: String
+
+  numberOfAllowedDevices: Int
+
+  identifier: String
+
+  subscriptionEndDate: String
+
+  subscriptionStartDate: String
+
+  paymentHandler: String
+
+  site: String
+
+  email: String
+
+  subscriptionStatus: String
+
+  paymentUniqueId: String
+
+  platform: EntitlementDevice
+
+  userId: String
+
+  paymentState: String
+
+  currencyCode: String
+
+  addedDate: String
+
+  freeTrial: Boolean
+
+  vlTransactionId: String
+
+  preTaxAmount: Float
+
+  paymentHandlerDisplayName: String
+
+  offerName: String
+
+  transactionDate: String
+
+  offerCode: String
+
+  createdOrderIDs: [String]
+
+  taxAmount: Int
+
+  cardType: String
+
+  ipaddress: String
+
+  paymentHandlerResponse: paymentHandlerResponse
+}
+
+type SubscriptionModule implements Module {
+  id: String
+
+  title: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+}
+
+type SubscriptionPaymentData {
+  subscriptionStatus: String
+
+  status: String
+
+  subscriptionInfo: SubscriptionInfo
+
+  subscriptionPlanInfo: SubscriptionPlanInfo
+
+  plans: [SubscriptionPlanInfo]
+
+  code: String
+
+  message: String
+}
+
+type SubscriptionPlanInfo {
+  id: String
+
+  name: String
+
+  identifier: String
+
+  description: String
+
+  renewable: Boolean
+
+  renewalCyclePeriodMultiplier: Float
+
+  renewalCycleType: String
+
+  objectKey: String
+
+  siteOwner: String
+
+  addedDate: Int
+
+  updateDate: Int
+
+  plansDetails: [PlansDetails]
+}
+
+enum SupportedDevices {
+  android_tablet
+
+  android_tv
+
+  oneplus_tv
+
+  web_browser
+
+  ios_ipad
+
+  ios_phone
+
+  android_phone
+
+  jio_stb
+
+  ios_apple_tv
+
+  roku_box
+
+  fire_tv
+
+  smart_tv_samsung
+
+  smart_tv_lg
+
+  windows_xbox
+
+  mi_tv
+
+  corpus
+
+  vizioTv
+
+  xfinityX1
+}
+
+type Tablet {
+  landscape: Boolean
+
+  portrait: Boolean
+}
+
+type Tag {
+  id: String
+
+  title: String
+
+  gist: MetaGist
+}
+
+type TagDetailModule implements Module {
+  id: String
+
+  title: String
+
+  subtitle: String
+
+  moduleType: ModuleType
+
+  contentType: String
+
+  hasNext: Boolean
+
+  setting: ModuleSetting
+
+  filter: ModuleFilter
+
+  metadataMap: Map
+
+  contentData: [Content]
+
+  layout: ModuleLayout
+}
+
+type Team implements Content {
+  id: String
+
+  title: String
+
+  shortName: String
+
+  owner: Boolean
+
+  gist: Gist
+
+  records: SeasonRecords
+
+  currentSeason: String
+
+  categories: [Category]
+
+  tags: [Tag]
+
+  creditBlocks: [CreditBlock]
+}
+
+type TextModule implements Module {
+  id: String
+
+  title: String
+
+  moduleType: ModuleType
+
+  rawText: String
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+}
+
+scalar Time
+
+type Timer {
+  unixTime: Int!
+
+  timeStamp: String!
+}
+
+type TokenResponseDevice {
+  authorizationToken: String!
+
+  refreshToken: String!
+
+  userId: String!
+
+  tveUserId: String
+
+  email: String
+
+  name: String
+
+  isSubscribed: Boolean
+
+  provider: String
+
+  providers: [String]
+
+  idpName: String
+
+  idpLogo: String
+
+  planId: String
+}
+
+type TokenResponseSignIn {
+  authorizationToken: String!
+
+  refreshToken: String!
+
+  userId: String
+
+  email: String
+
+  name: String
+
+  picture: String
+
+  isSubscribed: Boolean
+
+  provider: String
+
+  passwordEnabled: Boolean
+
+  phoneNumber: String
+
+  phoneCode: Int
+
+  providers: [String]
+
+  existingUser: Boolean
+}
+
+type TokenResponseSignUp {
+  authorizationToken: String!
+
+  refreshToken: String!
+
+  userId: String
+
+  email: String
+
+  name: String
+
+  picture: String
+
+  isSubscribed: Boolean
+
+  provider: String
+
+  profileId: String
+}
+
+type TveActivateModule implements Module {
+  id: String
+
+  title: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+}
+
+type TveModule implements Module {
+  id: String
+
+  title: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+}
+
+type Twitter {
+  url: String
+}
+
+input UpdateUserInput {
+  email: String
+
+  phoneNumber: String
+
+  provider: String
+
+  deviceId: String
+
+  countryisocode: String
+
+  postalcode: String
+
+  emailConsent: Boolean
+
+  password: String
+}
+
+input UpdateUserIntitalInput {
+  userId: String!
+
+  name: String
+
+  phoneNumber: String
+
+  email: String
+
+  emailConsent: Boolean
+
+  whatsappConsent: Boolean
+
+  alertPersonalization: AlertPersonalizationInput
+
+  contentPersonalization: ContentPersonalizationInput
+}
+
+type UserManagementModule implements Module {
+  id: String
+
+  title: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  rawText: String
+
+  layout: ModuleLayout
+}
+
+type UserProfileIntitalResponse {
+  name: String
+
+  phoneNumber: String
+
+  email: String
+
+  emailConsent: Boolean
+
+  whatsappConsent: Boolean
+
+  preferences: preferencesResponse
+
+  unverifiedEmail: String
+
+  unverifiedPhone: String
+}
+
+input ValidateStripeCustomerRequest {
+  email: String!
+
+  paymentMethodId: String!
+
+  token: String!
+
+  platform: EntitlementDevice!
+}
+
+type ValidateStripeCustomerResponse {
+  requestId: String
+
+  cardStatus: CardStatusInfo
+}
+
+type Venue {
+  id: String
+
+  title: String
+}
+
+type Video implements Content {
+  id: String
+
+  title: String
+
+  gist: Gist
+
+  categories: [Category]
+
+  tags: [Tag]
+
+  optionalTags: [Tag]
+
+  creditBlocks: [CreditBlock]
+
+  monetizationModels: [MonetizationModel]
+
+  plans: [Plan]
+
+  pricing: Pricing
+
+  parentalRating: String
+
+  showInAdvance: Boolean
+
+  year: String
+
+  free: Boolean
+
+  runtime: Int
+
+  skipIntroStartTime: Int
+
+  skipIntroEndTime: Int
+
+  skipRecapStartTime: Int
+
+  skipRecapEndTime: Int
+
+  playNextTime: Int
+
+  liveDetails: LiveDetails
+
+  streamingInfo: StreamingInfo
+
+  metadata: [ContentMetadata]
+
+  publishDate: Int
+
+  closedCaptions: [ClosedCaption]
+
+  relatedVideos: [Video]
+
+  currentState: GameState
+}
+
+type VideoAssets {
+  hls: String
+
+  mpeg: [Mpeg]
+}
+
+type VideoDetailModule implements Module {
+  id: String
+
+  title: String
+
+  subtitle: String
+
+  moduleType: ModuleType
+
+  contentType: String
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  contentData: [Content]
+
+  layout: ModuleLayout
+}
+
+type VideoPlaylist implements Content {
+  id: String
+
+  title: String
+
+  gist: Gist
+
+  categories: [Category]
+
+  tags: [Tag]
+
+  creditBlocks: [CreditBlock]
+
+  year: String
+
+  status: String
+
+  videoList: [Video]
+
+  metadata: [ContentMetadata]
+
+  publishDate: Int
+}
+
+type VideoPlaylistDetailModule implements Module {
+  id: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+
+  contentData: [Content]
+}
+
+type ViewPlanModule implements Module {
+  id: String
+
+  title: String
+
+  description: String
+
+  moduleType: ModuleType
+
+  setting: ModuleSetting
+
+  metadataMap: Map
+
+  layout: ModuleLayout
+}
+
+type WatchedHistory {
+  enable: Boolean
+
+  interval: Int
+}
+
+type WhatsappConsent {
+  enableWhatsappConsent: Boolean
+
+  isWhatsappChecked: Boolean
+
+  whatsappConsentMessage: String
+}
+
+type Youtube {
+  url: String
+}
+
+type Zipcode {
+  values: [String]
+
+  type: String
+}
+
+type cardInfo {
+  mandate_options: String
+
+  network: String
+
+  request_three_d_secure: String
+}
+
+type paymentHandlerResponse {
+  client_auth_token_expiry: String
+
+  client_auth_token: String
+
+  order_id: String
+
+  message: String
+
+  userId: String
+}
+
+type preferencesResponse {
+  teams: [String]
+
+  betting: BettingResponse
+}
+
+type typeNameValue {
+  name: String
+
+  value: String
+}
+
+"""
+The @deprecated built-in directive is used within the type system definition language to indicate deprecated portions of a GraphQL service's schema, such as deprecated fields on a type, arguments on a field, input fields on an input type, or values of an enum type.
+"""
+directive @deprecated (reason: String = "No longer supported") on FIELD_DEFINITION|ARGUMENT_DEFINITION|INPUT_FIELD_DEFINITION|ENUM_VALUE
+
+"""
+The @include directive may be provided for fields, fragment spreads, and inline fragments, and allows for conditional inclusion during execution as described by the if argument.
+"""
+directive @include (if: Boolean!) on FIELD|FRAGMENT_SPREAD|INLINE_FRAGMENT
+
+"""
+The @skip directive may be provided for fields, fragment spreads, and inline fragments, and allows for conditional exclusion during execution as described by the if argument.
+"""
+directive @skip (if: Boolean!) on FIELD|FRAGMENT_SPREAD|INLINE_FRAGMENT
+
+"""
+The @specifiedBy built-in directive is used within the type system definition language to provide a scalar specification URL for specifying the behavior of custom scalar types.
+"""
+directive @specifiedBy (url: String!) on SCALAR
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}

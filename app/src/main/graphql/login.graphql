@@ -1,0 +1,5 @@
+mutation login($site: String!, $device: EntitlementDevice!, $input: InitiatePasswordlessSignInput!){
+    identityInitiateSignOtp(site: $site, device :$device, input: $input){
+        key
+    }
+}
