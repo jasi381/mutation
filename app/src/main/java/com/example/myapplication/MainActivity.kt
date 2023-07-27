@@ -14,12 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import com.example.myapplication.viewmodel.LoginViewModel
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,35 +31,27 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val viewModel = viewModel<LoginViewModel>()
-                    val key = viewModel.state.value
-                  //  val text = if(viewModel.demo()!="null") viewModel.demo() else "null"
-
-                    Column() {
-                        Button(onClick= {
-                            viewModel.demo()
-                            Log.d("Hello", "onCreate: $key")
-                        } ) {
-
-                            Text(text = "text")
-                        }
-
-                    }
-//                    YourComposableFunction()
+                    YourComposableFunction2()
                 }
             }
         }
     }
 }
 
-@Composable
-fun YourComposableFunction(viewModel: LoginViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
-    var logMessage by remember { mutableStateOf("") }
 
-    Column() {
+
+@Composable
+fun YourComposableFunction2(viewModel: LoginViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+    var logMessage by remember { mutableStateOf("") }
+    val coroutineScope = rememberCoroutineScope()
+
+    Column {
         Button(onClick = {
-            logMessage = viewModel.demo().toString()
-            Log.d("Hello", "onCreate: $logMessage")
+
+            coroutineScope.launch {
+                logMessage = viewModel.demo()
+                Log.d("Hello", "onCreate: $logMessage")
+            }
         }) {
             Text(text = "text")
         }
