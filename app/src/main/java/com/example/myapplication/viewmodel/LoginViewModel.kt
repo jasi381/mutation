@@ -42,11 +42,13 @@ class LoginViewModel
 
             return key.value?:"Key is null"
         }catch (e: ApolloException) {
+            //value to extract error code from message
             val errorCode = HelperFunctions.extractErrorCodeFromMessage(e.message ?: "")
+            //value to extract error message from error code
             val errorMessage = ErrorHandler.parseGraphQLError(errorCode)
             if (errorMessage == null) {
                 key.value = e.message.toString()
-                return "Apollo Exception occurred: ${e.message}"
+                return "Something went wrong"
             }
             return errorMessage.message.toString()
 
@@ -57,7 +59,6 @@ class LoginViewModel
             return  "Other Exception occurred: ${e.message}"
         }
     }
-
 
 }
 
