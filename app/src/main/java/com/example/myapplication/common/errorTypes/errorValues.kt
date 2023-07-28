@@ -1,4 +1,4 @@
-package com.example.myapplication.errorTypes
+package com.example.myapplication.common.errorTypes
 
 object ErrorValues {
     const val CROSS_COUNTRY_PHONE = "This phone number is not allowed to use in this region"
@@ -21,6 +21,9 @@ object ErrorValues {
     const val UNVERIFIED_PHONE =  "Cannot sign with unverified phone"
     const val MAX_NUMBER_OF_OTP_EXCEEDED =  "You are exceeding the limit. Please try after some time"
     const val OTP_NOT_VALID =  "Otp not valid"
+
+    // RetrofitError
+    const val INVALIDREQUEST =  "Site missing in query params"
 
 
 }

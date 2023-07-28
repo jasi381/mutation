@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Optional
 import com.apollographql.apollo3.exception.ApolloException
-import com.example.myapplication.ErrorHandler
+import com.example.myapplication.common.ErrorHandler
 import com.example.type.EntitlementDevice
 import com.example.type.InitiatePasswordlessSignInput
 import kotlinx.coroutines.flow.singleOrNull
