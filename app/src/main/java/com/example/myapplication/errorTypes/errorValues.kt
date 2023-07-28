@@ -21,4 +21,6 @@ object ErrorValues {
     const val UNVERIFIED_PHONE =  "Cannot sign with unverified phone"
     const val MAX_NUMBER_OF_OTP_EXCEEDED =  "You are exceeding the limit. Please try after some time"
     const val OTP_NOT_VALID =  "Otp not valid"
+
+
 }

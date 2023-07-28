@@ -38,12 +38,12 @@ class LoginViewModel : ViewModel() {
             return key.value?:"Key is null"
         }catch (e: ApolloException) {
             val errorCode = extractErrorCodeFromMessage(e.message ?: "")
-           val errorMessage = ErrorHandler.parseGraphQLError(errorCode)
-
-
+            val errorMessage = ErrorHandler.parseGraphQLError(errorCode)
             return (errorMessage?:"Error code is null").toString()
 
-        }catch (e:Exception){
+        }
+
+        catch (e:Exception){
             key.value = e.message.toString()
             return  "Other Exception occurred: ${e.message}"
         }
