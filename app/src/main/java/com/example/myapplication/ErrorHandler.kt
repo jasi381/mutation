@@ -5,15 +5,17 @@ import com.example.myapplication.errorTypes.ErrorValues
 object ErrorHandler {
 
 
-    fun parseGraphQLError(apolloError: String?): Throwable {
+    fun parseGraphQLError(apolloError: String?): Throwable? {
 
-        when(apolloError){
+        when (apolloError) {
             "CROSS_COUNTRY_PHONE" -> {
                 return Throwable(ErrorValues.CROSS_COUNTRY_PHONE)
             }
+
             "DEVICE_LIMIT_EXCEEDED" -> {
                 return Throwable(ErrorValues.DEVICE_LIMIT_EXCEEDED)
             }
+
             "EMAIL_ALREADY_LINKED" -> {
                 return Throwable(ErrorValues.EMAIL_ALREADY_LINKED)
             }
@@ -69,7 +71,7 @@ object ErrorHandler {
                 return Throwable(ErrorValues.OTP_NOT_VALID)
             }
             else -> {
-                return Throwable("Unknown Error")
+                return null
             }
         }
 

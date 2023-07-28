@@ -1,7 +1,6 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -31,8 +30,10 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import com.example.myapplication.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,45 +67,39 @@ fun YourComposableFunction2(viewModel: LoginViewModel = androidx.lifecycle.viewm
     ) {
         Button(onClick = {
             isLoading = true
-
             coroutineScope.launch {
-                logMessage = viewModel.demo()
+                logMessage = viewModel.graphQlErrorHandler()
                 isLoading = false
-                Log.d("Hello", "YourComposableFunction2: ${logMessage}")
             }
-        }) {
+        }
+        ) {
             Text(text = "Click to get the key")
         }
         Spacer(modifier = Modifier.size(20.dp))
         if (isLoading.not()) {
-//            if (
-//            logMessage.contains("email_not_valid",true)
-////                logMessage == ErrorTypes.EMAIL_NOT_VALID
-//                ) {
-//                Text(text = ErrorTypes.EMAIL_NOT_VALID)
             Text(text = logMessage)
-            }
         }
+    }
 
-        if (isLoading) {
-            Dialog(
-                onDismissRequest = { },
-                properties = DialogProperties(
-                    dismissOnBackPress = false,
-                    dismissOnClickOutside = false
-                )
+    if (isLoading) {
+        Dialog(
+            onDismissRequest = { },
+            properties = DialogProperties(
+                dismissOnBackPress = false,
+                dismissOnClickOutside = false
+            )
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(100.dp)
+                    .background(Color.LightGray, RoundedCornerShape(25.dp)),
+                contentAlignment = Alignment.Center
             ) {
-                Box(
-                    modifier = Modifier
-                        .size(100.dp)
-                        .background(Color.LightGray, RoundedCornerShape(25.dp)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator(color = Color.Yellow)
-                }
+                CircularProgressIndicator(color = Color.Yellow)
             }
         }
     }
+}
 
 
 

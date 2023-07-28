@@ -6,19 +6,24 @@ import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Optional
 import com.apollographql.apollo3.exception.ApolloException
 import com.example.myapplication.ErrorHandler
+import com.example.myapplication.helpers.HelperFunctions
 import com.example.type.EntitlementDevice
 import com.example.type.InitiatePasswordlessSignInput
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.singleOrNull
+import javax.inject.Inject
 
 
-class LoginViewModel : ViewModel() {
-    private val apolloClient = ApolloClient.Builder()
-        .serverUrl("https://api.develop.monumentalsportsnetwork.com/graphql")
-        .build()
+@HiltViewModel
+class LoginViewModel
+@Inject constructor(
+    private val apolloClient: ApolloClient
+) : ViewModel() {
+
 
     private val key = mutableStateOf<String?>(null)
 
-    suspend fun demo(): String {
+    suspend fun graphQlErrorHandler(): String {
 
         try {
             val mutationQuery = apolloClient.mutation(
@@ -37,9 +42,13 @@ class LoginViewModel : ViewModel() {
 
             return key.value?:"Key is null"
         }catch (e: ApolloException) {
-            val errorCode = extractErrorCodeFromMessage(e.message ?: "")
+            val errorCode = HelperFunctions.extractErrorCodeFromMessage(e.message ?: "")
             val errorMessage = ErrorHandler.parseGraphQLError(errorCode)
-            return (errorMessage?:"Error code is null").toString()
+            if (errorMessage == null) {
+                key.value = e.message.toString()
+                return "Apollo Exception occurred: ${e.message}"
+            }
+            return errorMessage.message.toString()
 
         }
 
@@ -49,11 +58,7 @@ class LoginViewModel : ViewModel() {
         }
     }
 
-    private fun extractErrorCodeFromMessage(message: String): String? {
-        val regex = """code=(\w+)""".toRegex()
-        val matchResult = regex.find(message)
-        return matchResult?.groupValues?.get(1)
-    }
+
 }
 
 
