@@ -54,10 +54,6 @@ class LoginViewModel
 
         }
 
-        catch (e:Exception){
-            key.value = e.message.toString()
-            return  "Other Exception occurred: ${e.message}"
-        }
     }
 
     suspend fun validationToken():String{
