@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -68,7 +69,7 @@ fun YourComposableFunction2(viewModel: LoginViewModel = androidx.lifecycle.viewm
         Button(onClick = {
             isLoading = true
             coroutineScope.launch {
-                logMessage = viewModel.graphQlErrorHandler()
+                logMessage = viewModel.validationToken().toString()
                 isLoading = false
             }
         }

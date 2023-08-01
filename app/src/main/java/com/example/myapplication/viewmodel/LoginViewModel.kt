@@ -60,6 +60,30 @@ class LoginViewModel
         }
     }
 
+    suspend fun validationToken():String{
+        try{
+            val query = apolloClient.query(com.example.GetUserProfileQuery(site = "msndev")).toFlow()
+
+            val response = query.singleOrNull()
+            key.value = response?.dataAssertNoErrors.toString()
+
+            return key.value?:"Key is null"
+        }
+        catch (e:ApolloException){
+            val errorCode = HelperFunctions.extractErrorCode(e.message ?: "")
+            //val errorMessage = ErrorHandler.parseGraphQLError(errorCode)
+//            if (errorMessage == null) {
+//                key.value = e.message.toString()
+//                return "Something went wrong"
+//            }
+            return errorCode.toString()
+        }
+        catch (e:Exception){
+            key.value = e.message.toString()
+            return  "Other Exception occurred: ${e.message}"
+        }
+    }
+
 }
 
 
